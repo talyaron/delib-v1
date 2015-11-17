@@ -11,7 +11,7 @@ function parseDateToDB (time) {
             
             
 //Reshuffle Array
-// This is important
+// This is important////
 function shuffleArray(array) {
     
     
