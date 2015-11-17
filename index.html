@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>החלטה משתפת</title>
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="img/favicon.png"/>
+        <script src="firebase.js"></script>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="commonFunctions.js"></script>
+  <!--      <script src="move.js"></script> -->
+      
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+                        
+        <link rel=stylesheet type="text/css" href="stylesheet.css">
+        
+       <link rel='stylesheet' href='view-source:https://visionmedia.github.io/build/build.css'>          
+        
+    </head>
+    <body dir="rtl">
+        
+        <!-------- login screen ---------->
+        
+        <div id="login">
+            <div id="loginForm">
+                    <form class="pure-form" onkeypress ="setName(this.form)">
+                    <p id="sessionName" width="150px"></p>                    
+                    <input type="text" id="nameForm" name="nameForm" size="16" placeholder="שם פרטי ושם משפחה"> 
+                    <input type="button" class="pure-button action-button" value="אישור" onclick="setName(this.form)">
+                </form>
+                <div id="cc"><br>פותח על ידי <a href="http://bit.ly/1HZMMZS" target='_blank'>צוות החלטה משתפת - הסדנא לידע ציבורי</a><br> - כל הזכויות שמורות
+</div>
+            </div>            
+        </div>
+        
+        <!---------- header ---------->
+        
+        <header></header>
+        
+        <!---------------------  SIMPLE VOTING ------------------------>
+        <!-------------- Questions page ------------------------>
+        
+        <div id="questionsList"></div>
+        
+        <!-------------- Voting page ------------------------>
+        <div id="questionPage">            
+            
+            
+            <div id="results"></div>
+            <div id="titleHead" onclick="ShowHideExplan()"></div>
+            <div id="explain"></div>
+            
+            <img src="img/close.png" width="35px" class="clickables" onclick="hideAllEcept('questionsList')" id="okQuestion">
+        </div>
+        
+        <!--------------Wiz questions Page --------------------->
+        <div id="wizQuestion"></div>
+        
+        <!-------------- Edit Questions page ----------------->
+        <div id="editQuestions"></div>
+        
+        <!--------------- New Questions ------------------>
+        
+        <div id="newQuestion">   
+             
+        </div>        
+        
+        <!--------------- WISDOM OF THE GROUP ---------------->
+        
+         
+        
+        <!------------- Chat ------------>
+        <div id="chat"></div>
+    
+        <script src="move.js"></script>  
+        <script src="simpleVoting.js"></script>
+        <script src="wizQuestions.js"></script>    
+        <script src="chat.js"></script>
+
+<!--    
+        <a href="#" id="playButton">Play</a>
+        <div class="box" >
+          THISISBOX
+        </div>
+   
+    <script type="text/javascript">
+        document.getElementById('playButton').onclick = function (e) {
+            move('.box')
+          .x(300)
+          .end();
+        };
+    </script>
+    -->
+    </body>
+</html>

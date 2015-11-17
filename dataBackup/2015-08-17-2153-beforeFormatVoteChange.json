@@ -1,0 +1,808 @@
+{
+  "sessions" : {
+    "Ariel2015-communctationDay" : {
+      "details" : {
+        "name" : "גרסת ניסיון"
+      },
+      "questions" : {
+        "-JrHlxsedvmbNRkx2N6U" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "רעיונות לשיפור האפליקציה",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : ""
+          },
+          "option2" : {
+            "name" : ""
+          },
+          "option3" : {
+            "name" : ""
+          },
+          "option4" : {
+            "name" : ""
+          },
+          "options" : {
+            "-JrHmA8qHORgN8ZzPUV5" : {
+              "text" : {
+                "color" : "#1BCC72",
+                "mainText" : "כולל, אפשרות הרשמה, כמו לעיתון",
+                "title" : "שיחליף את הפורום הישובי"
+              },
+              "votes" : {
+                "yes" : {
+                  "טל ירון" : "טל ירון"
+                }
+              }
+            },
+            "-JrHmJKVapaaNQz7wbr9" : {
+              "text" : {
+                "color" : "#EAD3C7",
+                "mainText" : "",
+                "title" : "כפתורים ברורים יותר,<div>עריכה: הייתי מוסיף הסברים</div>"
+              }
+            },
+            "-JrHmUur35p2lX3_QeRb" : {
+              "text" : {
+                "color" : "#429570",
+                "mainText" : "מהדיון הכללי ועד ההחלטה וההצבעה",
+                "title" : "שיוביל תהליך דיון שלם"
+              }
+            },
+            "-JrHmcNDnDi69vYpp-Yq" : {
+              "text" : {
+                "color" : "#192DDE",
+                "mainText" : "",
+                "title" : "לבנות לרכזות דף משלהן, עם יכולת להוסיף"
+              }
+            },
+            "-JrHoZ8oFILHTtnL1KCb" : {
+              "text" : {
+                "color" : "#4D565D",
+                "mainText" : "",
+                "title" : "להמיר בלחיצה ממצב למצב"
+              }
+            },
+            "-JrHogPNFrepjyfQ0GyX" : {
+              "text" : {
+                "color" : "#165FD0",
+                "mainText" : "לעדכן, בשלבים מוגדרים מראש. המשתמש גם יוכל לקבוע",
+                "title" : "עדכוני דוא\"ל, וחיווי אחר"
+              },
+              "votes" : {
+                "yes" : {
+                  "טל ירון" : "טל ירון"
+                }
+              }
+            },
+            "-JrHthrppLGnaoWNzsaR" : {
+              "text" : {
+                "color" : "#E1B881",
+                "mainText" : "",
+                "title" : "אפשר לאחד הצעות"
+              },
+              "votes" : {
+                "yes" : {
+                  "טל ירון" : "טל ירון"
+                }
+              }
+            },
+            "-JrIgKDoTujAjvab4hoL" : {
+              "text" : {
+                "color" : "#4254E7",
+                "mainText" : "כאלו שניתן לעקוב אחריהם. שאתה מקבל עדכון יומי, בזמן שאתה רוצה, נכנס ומתעדכן, ואם אתה רוצה, אתה מגביר את העדכונים, או מתעדכן מתי שבא לך.",
+                "title" : "לבנות פרומים דפרינציאלים"
+              },
+              "votes" : {
+                "no" : {
+                  "בן ברוך" : "בן ברוך"
+                },
+                "yes" : {
+                  "טל ירון" : "טל ירון"
+                }
+              }
+            },
+            "-JrNXDMY4j8kKzNWXrOe" : {
+              "text" : {
+                "color" : "#31675E",
+                "mainText" : "",
+                "title" : "ליצור אינדיקציות על התקדמות או ירידה של הצעות שלך או הצעות שאתה תומך או מתנגד להן"
+              },
+              "votes" : {
+                "yes" : {
+                  "א א" : "א א",
+                  "טל ירון" : "טל ירון",
+                  "רון הוז" : "רון הוז"
+                }
+              }
+            },
+            "-Js-KpcJXdtZC5Irhcqi" : {
+              "text" : {
+                "color" : "#BB8602",
+                "mainText" : "בחוכמת המון לתת הגבלה לכמות ההצבעות",
+                "title" : "לתת הגבלה על כמות ההצבעות"
+              }
+            },
+            "-Js-ccZdYQ4GGuaAOBHQ" : {
+              "text" : {
+                "color" : "#593ED2",
+                "mainText" : "שישיה בצד שמאל ריבוע עם מקום וצבע במדרגות, ורק בלחיצה, מעדכנים מקום",
+                "title" : "כדי לפתור בעיות קפיצה"
+              },
+              "votes" : {
+                "no" : {
+                  "בן ברוך" : "בן ברוך"
+                },
+                "yes" : {
+                  "טל ירון" : "טל ירון"
+                }
+              }
+            },
+            "-Js-dxXVsgGzMr07HT-2" : {
+              "text" : {
+                "color" : "#169A0F",
+                "mainText" : "וללת כוח אחד לכולם",
+                "title" : "לדרג על פי משקל"
+              },
+              "votes" : {
+                "no" : {
+                  "טל ירון" : "טל ירון"
+                }
+              }
+            },
+            "-JvrQ20XxmRP3EUJbm3K" : {
+              "text" : {
+                "color" : "#586480",
+                "mainText" : "לאפשר למארגן ההצבעה הגדרה שתהיה או לא תהיה אנונימיות (עם מנגנון אבטחה אם יש למישהו רעיון)",
+                "title" : "אנונימיות"
+              }
+            },
+            "-JvrQK1tkYlM7SWpGIOk" : {
+              "text" : {
+                "color" : "#FDAFB6",
+                "mainText" : "פתרון יצירתי למניעת רובוטים או חשבונות פייקטיבים.<br />משהו שמייחד את המשתמש ומחייב אותו לעשות פעולה אנושית",
+                "title" : "אבטחה"
+              }
+            }
+          },
+          "type" : "wiz"
+        },
+        "-JrYp3Jsy2E_jqRCqMLJ" : {
+          "answers" : {
+            "א" : {
+              "voter" : "",
+              "אברהם יצחק מאיר" : "אברהם יצחק מאיר",
+              "אריה שואג" : "אריה שואג",
+              "דולפין שמח! :-D :-D" : "דולפין שמח! :-D :-D",
+              "הארנב המקפץ" : "הארנב המקפץ",
+              "חננאל" : "חננאל",
+              "טל" : "טל",
+              "טל " : "טל ",
+              "טל ליכט" : "טל ליכט",
+              "ישראל ישראלי" : "ישראל ישראלי",
+              "כלב נושך" : "כלב נושך",
+              "מאיה לשקוביץ" : "מאיה לשקוביץ",
+              "נועה" : "נועה"
+            },
+            "ב" : {
+              "voter" : "",
+              "סוס דוהר" : "סוס דוהר"
+            },
+            "ג" : {
+              "voter" : "",
+              "אבי" : "אבי",
+              "גילה בעם" : "גילה בעם",
+              "חמוס בהזיות" : "חמוס בהזיות",
+              "טיגריס מהיר" : "טיגריס מהיר",
+              "תרנגול מתעטש" : "תרנגול מתעטש"
+            },
+            "ד" : {
+              "voter" : "",
+              "א א" : "א א",
+              "בן ברוך" : "בן ברוך",
+              "שיינין" : "שיינין"
+            }
+          },
+          "explanation" : "",
+          "header" : "האם לעשות פעולה בשבת",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "כן"
+          },
+          "option2" : {
+            "name" : "נמנע"
+          },
+          "option3" : {
+            "name" : "לא"
+          },
+          "option4" : {
+            "name" : ""
+          },
+          "type" : "reg"
+        },
+        "-Ju88Xwg2NtCaHmIhtWi" : {
+          "answers" : {
+            "א" : {
+              "voter" : "",
+              "אביעדון" : "אביעדון",
+              "איתמר" : "איתמר",
+              "איתמר אפלבוים" : "איתמר אפלבוים",
+              "אלעד מוריה" : "אלעד מוריה",
+              "אפרים " : "אפרים ",
+              "יובל דרבי" : "יובל דרבי",
+              "כגכ" : "כגכ",
+              "נתנאל כהן" : "נתנאל כהן",
+              "שיינין" : "שיינין",
+              "שיינין " : "שיינין ",
+              "שמואל פרנקל" : "שמואל פרנקל"
+            },
+            "ב" : {
+              "voter" : "",
+              "חננאל" : "חננאל"
+            },
+            "ג" : {
+              "voter" : "",
+              "טל ליכט" : "טל ליכט",
+              "ישכר רבינוביץ " : "ישכר רבינוביץ ",
+              "נתן גולדשטיין" : "נתן גולדשטיין",
+              "צחי 3" : "צחי 3"
+            },
+            "ד" : {
+              "voter" : "",
+              "א א" : "א א",
+              "בומבך" : "בומבך",
+              "בן ברוך" : "בן ברוך",
+              "גילה בעם" : "גילה בעם",
+              "יהושע מאייר" : "יהושע מאייר",
+              "יושי" : "יושי"
+            }
+          },
+          "explanation" : "",
+          "header" : "מתי לעשות חבורא עם הרב אליאב",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "חמישי"
+          },
+          "option2" : {
+            "name" : "רביעי"
+          },
+          "option3" : {
+            "name" : "אחר"
+          },
+          "option4" : {
+            "name" : "נמנע"
+          },
+          "type" : "reg"
+        },
+        "-JuCAUSbyf-ZwlePLiYw" : {
+          "answers" : {
+            "א" : {
+              "voter" : "",
+              "אפל" : "אפל",
+              "אפרים שרם" : "אפרים שרם",
+              "מייקי \"אני המש\"ק דת הכי טוב בצה\"ל\" קפלן" : "מייקי \"אני המש\"ק דת הכי טוב בצה\"ל\" קפלן",
+              "רבינוביץ ישכר" : "רבינוביץ ישכר"
+            },
+            "ב" : {
+              "voter" : "",
+              "אביעד דון" : "אביעד דון",
+              "אלעד" : "אלעד",
+              "אפרים " : "אפרים ",
+              "חננאל" : "חננאל",
+              "יובל דרבי" : "יובל דרבי",
+              "נתן גולדשטיין" : "נתן גולדשטיין",
+              "רועי הומינר" : "רועי הומינר",
+              "שיינין" : "שיינין"
+            },
+            "ג" : {
+              "voter" : "",
+              "דניאל קוזניץ" : "דניאל קוזניץ",
+              "עידן פוניאה" : "עידן פוניאה"
+            },
+            "ד" : {
+              "voter" : "",
+              "א א" : "א א"
+            }
+          },
+          "explanation" : "",
+          "header" : "שבת 'שעור'",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "השבת"
+          },
+          "option2" : {
+            "name" : "הבאה"
+          },
+          "option3" : {
+            "name" : "נמנע"
+          },
+          "option4" : {
+            "name" : ""
+          },
+          "type" : "reg"
+        },
+        "-JwvMJz4Q2VUdCmVHoOr" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "ניסוי",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : ""
+          },
+          "option2" : {
+            "name" : ""
+          },
+          "option3" : {
+            "name" : ""
+          },
+          "option4" : {
+            "name" : ""
+          },
+          "options" : {
+            "-JwvMQsNfSeS4QM7_njV" : {
+              "text" : {
+                "color" : "#D1DE64",
+                "mainText" : "",
+                "title" : "אופציה חדשה"
+              },
+              "votes" : {
+                "yes" : {
+                  "ט21" : "ט21",
+                  "טל1" : "טל1"
+                }
+              }
+            },
+            "-JwvMUytsFfq1eFM7Aiy" : {
+              "text" : {
+                "color" : "#CB9B60",
+                "mainText" : "",
+                "title" : "אופציה שניה"
+              },
+              "votes" : {
+                "yes" : {
+                  "ט21" : "ט21",
+                  "טל1" : "טל1",
+                  "צבי" : "צבי"
+                }
+              }
+            },
+            "-JwwWUHYQ88x8c1THkjp" : {
+              "text" : {
+                "color" : "#E81115",
+                "mainText" : "עם כגחכידגךחכיgf",
+                "title" : "שניים סינים"
+              },
+              "votes" : {
+                "yes" : {
+                  "צבי" : "צבי"
+                }
+              }
+            },
+            "-JwwkIzEdZAA3UiQVjWt" : {
+              "text" : {
+                "mainText" : "גךלכחהדמגמךכלהחגמ",
+                "title" : "מחשב לכל פועל"
+              }
+            }
+          },
+          "type" : "wiz"
+        },
+        "-JwwgP9fx7sW2TE_tsCw" : {
+          "answers" : {
+            "א" : {
+              "voter" : "",
+              "שבי קורזן" : "שבי קורזן"
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : "",
+              "טל" : "טל"
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "הי",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "בעד"
+          },
+          "option2" : {
+            "name" : "נגד"
+          },
+          "option3" : {
+            "name" : "נמנע"
+          },
+          "option4" : {
+            "name" : ""
+          },
+          "type" : "reg"
+        },
+        "-JwwgsEH6o9oMpx2vIMs" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "מתי הישיבה הבאה",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : ""
+          },
+          "option2" : {
+            "name" : ""
+          },
+          "option3" : {
+            "name" : ""
+          },
+          "option4" : {
+            "name" : ""
+          },
+          "options" : {
+            "-JwwgvhUq3UUhd96p3ox" : {
+              "text" : {
+                "color" : "#0CE342",
+                "mainText" : "",
+                "title" : "ביום רביעי"
+              },
+              "votes" : {
+                "no" : {
+                  "שבי קורזן" : "שבי קורזן"
+                },
+                "yes" : {
+                  "טל" : "טל"
+                }
+              }
+            },
+            "-Jwwh-ynlWNRbnCm-N4k" : {
+              "text" : {
+                "color" : "#2C4753",
+                "mainText" : "",
+                "title" : "ביום חמישי"
+              },
+              "votes" : {
+                "no" : {
+                  "טל" : "טל"
+                },
+                "yes" : {
+                  "שבי קורזן" : "שבי קורזן"
+                }
+              }
+            }
+          },
+          "type" : "wiz"
+        }
+      },
+      "questionsChat" : {
+        "-JrEZ9BVSpb3HBHTrfv0" : {
+          "options" : {
+            "-JrEZKf2L9cc2k1K-lhf" : {
+              "chat" : {
+                "-JrEZVOahdVQq2hkT0QF" : {
+                  "name" : "טל ירון",
+                  "text" : "שלום",
+                  "time" : 1433706563403
+                },
+                "-JrEZWdAC4b7bjcFh0hI" : {
+                  "name" : "טל שמואל",
+                  "text" : "הי",
+                  "time" : 1433706568521
+                }
+              }
+            }
+          }
+        },
+        "-JrEbWyliEw8kHnp-n5Y" : {
+          "options" : {
+            "-JrEbaJNRkdX8354W1Fi" : {
+              "chat" : {
+                "-JrEbfdOue50ncLocfbU" : {
+                  "name" : "הסהב",
+                  "text" : "זה מאד יקר",
+                  "time" : 1433707395929
+                },
+                "-JrEbjS7FuRJJ91H_f04" : {
+                  "name" : "טל",
+                  "text" : "זה מאוד חשוב",
+                  "time" : 1433707411518
+                },
+                "-JrEblmE2a8yH0Pw1hZj" : {
+                  "name" : "הסהב",
+                  "text" : "למה זה מאד חשוב?",
+                  "time" : 1433707421057
+                },
+                "-JrEbnkMMndQqSatgjz7" : {
+                  "name" : "טל",
+                  "text" : "כי זה מגעיל",
+                  "time" : 1433707429127
+                },
+                "-JrEbuPSKIe502madhdD" : {
+                  "name" : "הסהב",
+                  "text" : "לא הבנתי, מה מגעיל בלהוריד שער עם סכין?",
+                  "time" : 1433707456407
+                },
+                "-JrEc-KvrnU-8CbIAYwz" : {
+                  "name" : "טל",
+                  "text" : "זה עושה קוצים ומעבה את כשערות",
+                  "time" : 1433707480698
+                },
+                "-JrEc0LRZHf-1GBHUKcF" : {
+                  "name" : "טל",
+                  "text" : "ה",
+                  "time" : 1433707484829
+                },
+                "-JrEc4ianpGPOHIprfQZ" : {
+                  "name" : "הסהב",
+                  "text" : "אז מגלחים כל שבוע, וזה לא באמת מעבה את השער. זאת אגדה אורבנית",
+                  "time" : 1433707502743
+                },
+                "-JrEcCCYV_LGwIxMuTP_" : {
+                  "name" : "טל",
+                  "text" : "אבל עדין זה לא טובב",
+                  "time" : 1433707533398
+                },
+                "-JrEcEt3DptJA8mhOGQf" : {
+                  "name" : "טל",
+                  "text" : "ואתה חופר",
+                  "time" : 1433707544387
+                },
+                "-JrEcFfM3TZDcXiYwimW" : {
+                  "name" : "הסהב",
+                  "text" : "מה להמשיך לכתוב?",
+                  "time" : 1433707547575
+                },
+                "-JrEcHYrp_BmDMFNBubB" : {
+                  "name" : "הסהב",
+                  "text" : "את חופרת בעצמך!",
+                  "time" : 1433707555313
+                },
+                "-JrEcKGXJp9FhFt3c830" : {
+                  "name" : "טל",
+                  "text" : "אותה ילדקטן",
+                  "time" : 1433707566428
+                },
+                "-JrEcM3HBcqpVtvivxUW" : {
+                  "name" : "הסהב",
+                  "text" : "נכון",
+                  "time" : 1433707573765
+                },
+                "-JrEcO9-7-qnvl5oL2Zn" : {
+                  "name" : "טל",
+                  "text" : "חחח",
+                  "time" : 1433707582328
+                },
+                "-JrEcPNAohXiMWkrbua4" : {
+                  "name" : "הסהב",
+                  "text" : "פחחחחח",
+                  "time" : 1433707587330
+                },
+                "-JrEcQyOEMZxuF_LSjfR" : {
+                  "name" : "טל",
+                  "text" : "כחחחח",
+                  "time" : 1433707593884
+                },
+                "-JrEcRQcbJDxBCVvFBpT" : {
+                  "name" : "הסהב",
+                  "text" : "",
+                  "time" : 1433707595956
+                },
+                "-JrEcTSBI2v6lFb-33_U" : {
+                  "name" : "הסהב",
+                  "text" : "ממש בוגר מצדך :-)",
+                  "time" : 1433707604053
+                },
+                "-JrEcZXCaKDBCKHH6U6I" : {
+                  "name" : "טל",
+                  "text" : "אני יודעת",
+                  "time" : 1433707628941
+                },
+                "-JrEcaZVT_xCjkUIxybM" : {
+                  "name" : "הסהב",
+                  "text" : "באורלי....",
+                  "time" : 1433707637261
+                },
+                "-JrEcdEFy7plNGXCJtNY" : {
+                  "name" : "טל",
+                  "text" : "אב.. .....",
+                  "time" : 1433707648181
+                },
+                "-JrEcgLOTOs8WPFqwSvq" : {
+                  "name" : "טל",
+                  "text" : "א",
+                  "time" : 1433707660959
+                }
+              }
+            }
+          }
+        },
+        "-JrHlxsedvmbNRkx2N6U" : {
+          "options" : {
+            "-JrHmA8qHORgN8ZzPUV5" : {
+              "chat" : {
+                "-JrVgTrKlWo9liB7Oevm" : {
+                  "name" : "טל ירון",
+                  "text" : "הי",
+                  "time" : 1433993867036
+                }
+              }
+            },
+            "-Js-dxXVsgGzMr07HT-2" : {
+              "chat" : {
+                "-JvrPTr1dDaDKClnxXw7" : {
+                  "name" : "עידן פוניאה",
+                  "text" : "להציע הצבעות אנונימיות או לא אנונימיות",
+                  "time" : 1438669993441
+                }
+              }
+            }
+          }
+        },
+        "-JrHosbD3gtEAybMWNYG" : {
+          "options" : {
+            "-JrIgaSEeN8WCP3w1V-x" : {
+              "chat" : {
+                "-JrIgfiPRnqJ88rmJV5W" : {
+                  "name" : "טל ירון",
+                  "text" : "ממש מגניב",
+                  "time" : 1433775815787
+                }
+              }
+            }
+          }
+        },
+        "-JuHaYExm_IACRbiHxVr" : {
+          "options" : {
+            "-JuHahppFfVz3n7eYAQ_" : {
+              "chat" : {
+                "-JuHaoa3aB_lqzU-zM-3" : {
+                  "name" : "טל ירון",
+                  "text" : "הי",
+                  "time" : 1436978727675
+                },
+                "-JuHarsIeKL-yC-fOnAR" : {
+                  "name" : "א",
+                  "text" : "הלו",
+                  "time" : 1436978741070
+                }
+              }
+            }
+          }
+        },
+        "-JugEQbxdi_KXfDekcJI" : {
+          "options" : {
+            "-JugEWEbsDGaJ4zWkAMm" : {
+              "chat" : {
+                "-JugRG4RFbqYtr6i6ZY4" : {
+                  "name" : "טל",
+                  "text" : "עעיע",
+                  "time" : 1437412168232
+                }
+              }
+            },
+            "-JugX7gndtsQl0SNVBy0" : {
+              "chat" : {
+                "-JugzSJNKWZPDg-ix-xc" : {
+                  "name" : "טל",
+                  "text" : "ייי",
+                  "time" : 1437421393374
+                },
+                "-JugznddFhI27VdXsgkD" : {
+                  "name" : "צבי נר",
+                  "text" : "hfjhgfjhgfj\n",
+                  "time" : 1437421484995
+                }
+              }
+            }
+          }
+        },
+        "-JvocXfwK3JAKIoyXYNz" : {
+          "options" : {
+            "-Jvoc_hDBgjtJXhvMl48" : {
+              "chat" : {
+                "-Jvp5v4LVIpyCUf1Ud8n" : {
+                  "name" : "טל ירון42",
+                  "text" : "עכיכעי",
+                  "time" : 1438631309857
+                },
+                "-Jvp5w6XL2m4qKu9vOWe" : {
+                  "name" : "טל 3",
+                  "text" : "חייט",
+                  "time" : 1438631314100
+                }
+              }
+            },
+            "-JvokRI9NuduTP5spZ9i" : {
+              "chat" : {
+                "-Jw1XHoJ4jnQ0NAopDmK" : {
+                  "name" : "טל",
+                  "text" : "לדבר",
+                  "time" : 1438856588935
+                },
+                "-Jw1XL976KRQ2BYShP3a" : {
+                  "name" : "אבי",
+                  "text" : "אני חושב שכדאי לייצר תשובה אחרת",
+                  "time" : 1438856602997
+                }
+              }
+            }
+          }
+        },
+        "-JvoqaBfZN328CP8GU3A" : {
+          "options" : {
+            "-Jvoqf2NxO3fvOI6tlz5" : {
+              "chat" : {
+                "-JvosdekruNLdpfQ4SNO" : {
+                  "name" : "טל ירון 2",
+                  "text" : "הי צחי",
+                  "time" : 1438627568510
+                },
+                "-JvosgFAwsq7ScdPjcYD" : {
+                  "name" : "צחי 2",
+                  "text" : "למה אמרת ישיר?\n",
+                  "time" : 1438627579180
+                },
+                "-JvosiH9u5PP4DjOmW13" : {
+                  "name" : "טל ירון 2",
+                  "text" : "כי זה נשמע נחמד",
+                  "time" : 1438627587411
+                }
+              }
+            }
+          }
+        },
+        "-JwwgsEH6o9oMpx2vIMs" : {
+          "options" : {
+            "-Jwwh-ynlWNRbnCm-N4k" : {
+              "chat" : {
+                "-JwwhDVjSEuCULV3NP0R" : {
+                  "name" : "טל",
+                  "text" : "הי שבי",
+                  "time" : 1439832533453
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

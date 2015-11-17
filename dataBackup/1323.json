@@ -1,0 +1,581 @@
+{
+  "sessions" : {
+    "Ariel2015-communctationDay" : {
+      "details" : {
+        "name" : "יום פתוח בבית הספר לתקשורת - מאי 2015"
+      },
+      "questions" : {
+        "-JphYf7hnF3ycU-7RsKq" : {
+          "answers" : {
+            "א" : {
+              "voter" : "",
+              "איציק" : "איציק",
+              "דנה" : "דנה",
+              "טל ירון" : "טל ירון",
+              "ימכייע" : "ימכייע",
+              "שמוליק" : "שמוליק"
+            },
+            "ב" : {
+              "Ffffvvg" : "Ffffvvg",
+              "voter" : "",
+              "יוחי בר נידר" : "יוחי בר נידר"
+            },
+            "ג" : {
+              "bcvb" : "bcvb",
+              "voter" : "",
+              "חכיי " : "חכיי ",
+              "טל יעמ" : "טל יעמ"
+            },
+            "ד" : {
+              "voter" : "",
+              "חכי " : "חכי ",
+              "טל ירון הג" : "טל ירון הג",
+              "כי ידי " : "כי ידי "
+            }
+          },
+          "explanation" : "ישנם מקרים בהם פילים מוצאים את עצמם במקומות בלתי סבירים. אנא סייעו למוכר להוציא את הפיל",
+          "header" : "כיצד מוצאים פיל בחנות חרסינה?",
+          "options" : {
+            "-JppwgRA48IzfxYMTjHG" : {
+              "text" : {
+                "mainText" : "טקסט...",
+                "title" : "בדיקה 13"
+              },
+              "votes" : {
+                "yes" : {
+                  "טל" : "טל",
+                  "משה" : "משה"
+                }
+              }
+            },
+            "-JppzLzuanLdHxXN3mxt" : {
+              "text" : {
+                "mainText" : "טקסט...",
+                "title" : "כותרת.."
+              }
+            },
+            "-JppzOlLdg3BaExRg0O0" : {
+              "text" : {
+                "mainText" : "טקסט...",
+                "title" : "הכי דפוק.."
+              },
+              "votes" : {
+                "no" : {
+                  "טל" : "טל",
+                  "משה" : "משה"
+                }
+              }
+            }
+          },
+          "type" : "wiz"
+        },
+        "-JpheTwTRxiYPdthDL4j" : {
+          "answers" : {
+            "א" : {
+              "voter" : "",
+              "גכעגכע" : "גכעגכע"
+            },
+            "ב" : {
+              "voter" : "",
+              "טל ירון" : "טל ירון"
+            },
+            "ג" : {
+              "voter" : "",
+              "דנה" : "דנה",
+              "יוחי בר נידר" : "יוחי בר נידר",
+              "שמוליק" : "שמוליק"
+            },
+            "ד" : {
+              "voter" : "",
+              "איציק" : "איציק"
+            }
+          },
+          "explanation" : "הלכןת אפיקומן",
+          "header" : "חמץ בפסח כיצד?",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "ט"
+          },
+          "option2" : {
+            "name" : "ע"
+          },
+          "option3" : {
+            "name" : "ג"
+          },
+          "option4" : {
+            "name" : "ש"
+          },
+          "type" : "reg"
+        },
+        "-Jpjx6BI4EN30TVV8I_G" : {
+          "answers" : {
+            "א" : {
+              "voter" : "",
+              "טל ירון" : "טל ירון"
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "ניסוי של טל",
+          "header" : "שאלה מארץ השאלות",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "בעד"
+          },
+          "option2" : {
+            "name" : "נגד"
+          },
+          "option3" : {
+            "name" : "בחירה"
+          },
+          "option4" : {
+            "name" : "וסתם"
+          },
+          "type" : "yesno"
+        },
+        "-Jpp1z9vOGilvDUOwOoL" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : "",
+              "טל ירון" : "טל ירון"
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "ניסיון",
+          "header" : "בדיקת שאלות",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "א"
+          },
+          "option2" : {
+            "name" : "ב"
+          },
+          "option3" : {
+            "name" : "ג"
+          },
+          "option4" : {
+            "name" : "ד"
+          }
+        },
+        "-JppsZADzUZvY_NWyrCk" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "מי קבע כי \"כל אחד יכול לקבל 15 דקות של פרסום ותהילה\"?",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "מרשל מקלוהן"
+          },
+          "option2" : {
+            "name" : "ג'רי סיינפלד"
+          },
+          "option3" : {
+            "name" : "אנדי וורהול"
+          },
+          "option4" : {
+            "name" : "מוטי קירשנבאום"
+          }
+        },
+        "-JppsdldYVfE_XymMsir" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "מי אמר ש\"המדיום הוא המסר\"?",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "מרשל מקלוהן"
+          },
+          "option2" : {
+            "name" : "ג'רי סיינפלד"
+          },
+          "option3" : {
+            "name" : "אנדי וורהול"
+          },
+          "option4" : {
+            "name" : "מוטי קירשנבאום"
+          }
+        },
+        "-Jppsoy5aZaFYtmjUTeL" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "העיתון הנפוץ ביותר במדינה נמכר ביום חול ב:",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "15 ש\"ח"
+          },
+          "option2" : {
+            "name" : "10 ש\"ח"
+          },
+          "option3" : {
+            "name" : "3 ש\"ח"
+          },
+          "option4" : {
+            "name" : "מחולק בחינם"
+          }
+        },
+        "-Jppsy5caVF8odoL9L69" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "\"אבי הטלפון הסלולרי\" הוא:",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "אלכסנדר גראהם בל"
+          },
+          "option2" : {
+            "name" : "דייויד סרנוף"
+          },
+          "option3" : {
+            "name" : "מרטין קופר"
+          },
+          "option4" : {
+            "name" : "סטיב ג'ובס"
+          }
+        },
+        "-Jppt5Gsh2Y3eo23nmSy" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "המדיה בה קצב אימוץ הטלפון הנייד היה הגבוה ביותר:",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "ישראל"
+          },
+          "option2" : {
+            "name" : "פינלנד"
+          },
+          "option3" : {
+            "name" : "הודו"
+          },
+          "option4" : {
+            "name" : "יפן"
+          }
+        },
+        "-JpptGvrmRannDRwzY2b" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "\"סלולר כשר\" הוא:",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "טלפון סלולרי ללא ערבוב בין בשר וחלב"
+          },
+          "option2" : {
+            "name" : "טלפון סלולרי ללא אפשרות גלישה באינטרנט"
+          },
+          "option3" : {
+            "name" : "טלפון סלולר ללא אפשרות שיחה בין גברים לנשים"
+          },
+          "option4" : {
+            "name" : "טלפון סלולרי ללא הפרעות וניתוקים"
+          }
+        },
+        "-JpptQHX4deuRH0phBO8" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "מה הגיל הממוצע בו ילד בישראל מקבל טלפון נייד?",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "כיתה א'"
+          },
+          "option2" : {
+            "name" : "כיתה ג'"
+          },
+          "option3" : {
+            "name" : "מתנת גיוס"
+          },
+          "option4" : {
+            "name" : "בחדר לידה"
+          }
+        },
+        "-JpptzkhoJ8S-rAC1-Js" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "מהי האפליקציה הסלולרית הפופולארית ביותר בישראל?",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "פייסבוק"
+          },
+          "option2" : {
+            "name" : "וייז"
+          },
+          "option3" : {
+            "name" : "טמקא (YNET)"
+          },
+          "option4" : {
+            "name" : "ווטסאפ"
+          }
+        },
+        "-JppuHIObDq3CYL5OxVc" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "נכון לשנת 2015, מהי חברת הסלולר הגדולה בישראל?",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "פלאפון"
+          },
+          "option2" : {
+            "name" : "סלקום"
+          },
+          "option3" : {
+            "name" : "פרטנר"
+          },
+          "option4" : {
+            "name" : "רמי לוי"
+          }
+        },
+        "-JppuPlM8jwEhHSsHBXB" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "איזו חברה גייסה הכי הרבה מנויים חדשים בשנה האחרונה?",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "רמי לוי"
+          },
+          "option2" : {
+            "name" : "גולן טלקום"
+          },
+          "option3" : {
+            "name" : "הוט מובייל"
+          },
+          "option4" : {
+            "name" : "Youphone"
+          }
+        },
+        "-JppvumiKp97Yjo4UbOP" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "מבין המשפטים הבאים, מהו המשפט שאיננו נכון:",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "בישראל יש יותר טלפונים סלולריים מאשר בני אדם"
+          },
+          "option2" : {
+            "name" : "רוב האנשים בישראל קנו לפחות פעם אחת מוצר כלשהו דרך הסלולר"
+          },
+          "option3" : {
+            "name" : "הסלולר הנמכר ביותר בישראל הוא דגם גלקסי "
+          },
+          "option4" : {
+            "name" : "בישראל נגנבים מדי שנה כ- 30 אלף טלפונים סלולריים"
+          }
+        },
+        "-Jppw7_EXNcQQkXgDMpU" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "מחקרים הוכיחו באופן חד משמעי כי: ",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "שימוש מרובה בסלולר מעלה את הסיכוי לחלות בסרטן "
+          },
+          "option2" : {
+            "name" : "שימוש מרובה בסלולר בקשר זוגי מעיד על כך שהקשר עדיין בשלבים התחלתיים"
+          },
+          "option3" : {
+            "name" : "שימוש מרובה של בבני נוער בסלולר מעלה את הסיכוי להפרעות קשב"
+          },
+          "option4" : {
+            "name" : "שימוש מרובה בסלולר בשיעור בבית ספר מעלה את הסיכוי להתקף לב של המורה"
+          }
+        },
+        "-JppwGW_kH0HIbIchJbp" : {
+          "answers" : {
+            "א" : {
+              "voter" : ""
+            },
+            "ב" : {
+              "voter" : ""
+            },
+            "ג" : {
+              "voter" : ""
+            },
+            "ד" : {
+              "voter" : ""
+            }
+          },
+          "explanation" : "",
+          "header" : "במדינת ישראל יש חוק:",
+          "numberOfAnswers" : 0,
+          "option1" : {
+            "name" : "האוסר על שימוש בסלולר בכיתה"
+          },
+          "option2" : {
+            "name" : "האוסר על שימוש בסלולר בבתי כנסת"
+          },
+          "option3" : {
+            "name" : "האוסר על שימוש בסלולר בבתי קולנוע"
+          },
+          "option4" : {
+            "name" : "אף תשובה איננה נכונה"
+          }
+        }
+      }
+    }
+  }
+}
