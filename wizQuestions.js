@@ -14,17 +14,17 @@ var optionsHtmlOld = new Array();
 function startWizOptions (questionKey) {
     
     //when an option is added, redraw options
-    sessionDB.child("questions/" + questionKey + "/options").on("child_added", function(snapshot){
+    sessionDB.child("questions/" + questionKey + "/options").limitToLast(1).on("child_added", function(snapshot){
+        console.log("start 'child_added'");
         wizShowOptions(questionKey);
     })
     
     //when an option is deleted, redraw options
     sessionDB.child("questions/" + questionKey + "/options").on("child_removed", function(snapshot){
+        console.log("start 'child_removed'");
         wizShowOptions(questionKey);
     })
-    
-    wizShowOptions(questionKey);
-    
+            
     //go over options and start to listen tp changes in votes and texts
     sessionDB.child("questions/" + questionKey + "/options").once("value", function (optionsDB) {
         optionsDB.forEach(function (optionDB) {
@@ -149,6 +149,7 @@ function wizShowOptions(questionKey){
         
                         
         //move options
+        console.log("show wiz options....")
         moveOptions(optionsHtml);
         
     })
@@ -204,89 +205,6 @@ function countVotes(questionKey, optionKey){
     return yesVotesCh - noVotesCh;
 }
 
-/*
-function getOptionsHtmlFromDB (questionKey){
-    
-    var questionKeyStr = JSON.stringify(questionKey);
-    //array for all the options
-    var l_optionsHtml = new Array();
-
-    console.log("ZZZZ outer : in");
-
-    sessionDB.child("questions/" + questionKey + "/options").once("value", function (optionsDB) {
-    
-
-        console.log("ZZZZ inner : in");
-
-        optionsDB.forEach(function (optionDB) {
-
-            var optionKey = optionDB.key();
-            var optionTitle = optionDB.val().text.title;
-            var optionText = optionDB.val().text.mainText;
-            var optionColor = optionDB.val().text.color;
-
-            
-            
-            var optionKeyStr = JSON.stringify(optionKey);
-            var yesStr = JSON.stringify("yes");
-            var noStr = JSON.stringify("no");
-            var optionTitleStr = JSON.stringify(optionTitle);
-            
-            if (optionColor === undefined) {
-                var colorStr = "brown";
-            } else {
-                var colorStr = optionColor;
-            }
-
-            var optionID = "Z_" + questionKey + "_" + optionKey + "_div";
-
-            //build the option HTML
-            var optionHtmlCurrent =
-                      "<div class='wizLayout' id='" + optionID + "' >" +
-                            "<div class='wizLeftPanel'>" +
-                                "<div class='wizVoteUp wizButtons clickables' onclick='setWizVote(" + questionKeyStr + "," + optionKeyStr + "," + yesStr + ")'><img src='img/Yes.png' width='30px'>" +
-                                "</div>" +
-                                "<div class='wizVoteDown wizButtons clickables' onclick='setWizVote(" + questionKeyStr + "," + optionKeyStr + "," + noStr + ")'><img src='img/no.png' height='30px'>" +
-                                "</div>" +
-                                "<div class='wizSuggest wizButtons clickables' onclick='setSuggestion()'><img src='img/suggestion.png' height='30px'>" +
-                                "</div>" +
-                                "<div class='wizTalk wizButtons clickables' onclick='startWizTalk(" + questionKeyStr + "," + optionKeyStr + ", " + optionTitleStr + ")'><img src='img/talk.png' height='30px'>" +
-                                "</div>" +
-                            "</div>" +
-                            "<div class='wizMainWrapText' style='background-color:" + colorStr + "'>" +
-                                "<div dir='rtl' class='wizMainText'>" +
-                                    "<div class='wizMainTextTitle' contenteditable='false' id='" + questionKey + optionKey + "T'>" +
-                                        optionTitle +
-                                    "</div>" +
-                                    "<div class='wizMainTextText' contenteditable='false' id='" + questionKey + optionKey + "'>" +
-                                        optionText +
-                                    "</div>" +
-                                "</div>" +
-                                " <input type='button' class='pure-button pure-button-primary' value='עריכה' onclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> " +
-                                " <span style='color: white' id='" + questionKey + optionKey + "votes'>בעד:" + yesVotesCh + ", נגד: " + noVotesCh + "</span>" +
-                            "</div></div>";
-            //add option to array of options
-            l_optionsHtml.push([(yesVotesCh - noVotesCh), optionHtmlCurrent, optionID, -1]); //[score, HTML, ID, location]
-            
-        })
-       
-        //sort by votes
-
-        l_optionsHtml.sort(function (a, b) { return b[0] - a[0] });
-        for (i in l_optionsHtml) {
-            l_optionsHtml[i][3] = i; // set index after sorting            
-        }
-    //    console.log("ZZZZ inner : out"+ l_optionsHtml);
-
-       // return l_optionsHtml;
-    })
-    console.log("ZZZZ outer : out");
-    //  console.log("ZZZZ inner : out"+ l_optionsHtml);
-    return l_optionsHtml;
-}
-
-
-*/
 
 
 function moveOptionsOnVoting (questionKey, optionKey) {
@@ -365,7 +283,7 @@ function updateText(questionKey, optionKey){
         
     sessionDB.child("questions/"+questionKey+"/options/"+optionKey+"/text/").update({mainText: textInput, title: titleInput});
     
-    wizShowOptions(questionKey);
+    //wizShowOptions(questionKey);
     $("#editWizQuestion").hide(500);
 }
 
@@ -402,9 +320,6 @@ function createOption(questionKey, form){
     console.log ("New option key is: " + optionKey);
     
     
-    //optionsHtmlOld = getOptionsHtmlFromDB();
-    //moveOptions(optionsHtmlOld);
-    
     $("#editWizQuestion").hide(500);
     wizShowOptions(questionKey);
     
@@ -424,8 +339,7 @@ function deleteWizOption (questionKey, optionKey){
     }
     
     sessionDB.child("questions/"+questionKey+"/options/"+optionKey).remove();
-    wizShowOptions(questionKey);
-    
+        
 }
 
 // --------------Edit Box ----------------------------
