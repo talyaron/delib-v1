@@ -32,29 +32,31 @@ function setTypeOfQuestion(type){
             
             // ----------- initial settings -------------------
             
-            var sessionName = "Ariel2015-communctationDay"
+            var sessionName = "Ariel2015-communctationDay";
             
-            sessionDB = new Firebase("https://votewiz.firebaseio.com/sessions/"+sessionName);
+            var DB = new Firebase("https://votewiz.firebaseio.com");
+            var sessionDB = DB.child("/sessions/"+sessionName);
             
             var isExplainOpen = true;
             
                         
             // ------------- login ---------------
             //get name of seesion and put it on login form
-            
+            /*
             sessionDB.child("details").once("value",function(data){
                 $("#sessionName").text(data.val().name);
             })
+            */
             
             var userName ="";
             
             $('#loginForm').submit(function (evt) {
                 evt.preventDefault();
                 
-                userName = $("#nameForm").val();
+                userName = $("#emailForm").val();
                 
                 if (userName === "") {
-                    $("#nameForm").css("background-color", "#dd3737");
+                    $("#emailForm").css("background-color", "#dd3737");
                 } else {
                     $("header").text("שלום "+userName);
                     showQuestions(); //show question page
@@ -67,14 +69,49 @@ function setTypeOfQuestion(type){
             });
 
             function setName(form){
-                userName = form.nameForm.value;
-                if (userName === "") {
-                    $("#nameForm").css("background-color", "#dd3737");
-                } else {
-                    $("header").text("שלום "+userName);
+                var email = form.email.value;
+                var pass = form.pass.value;
+                
+                $("#loginWait").text("רק רגע...");
+                                
+                DB.authWithPassword({
+                  email    : email,
+                  password : pass
+                }, function(error, authData) {
+                  if (error) {
+                    console.log("Login Failed!", error);
+                    
+                    $("#loginMessage2").css("background-color","red");
+                
+                
+                    switch (error.code) {
+                      case "INVALID_PASSWORD":
+                        $("#loginMessage2").text('סיסמא לא נכונה');
+                        break;                  
+                      case "INVALID_USER":
+                         $("#loginMessage2").text('אין משתמש כזה');
+                        break;
+                      default:
+                        $("#loginMessage2").text('הנתונים אינם תקינים');
+                    }
+                      
+                  } else {
+                    console.log("Authenticated successfully with payload:", authData);
+                    
+                    //find user name by uid
+                      console.log("uid: "+authData.uid);
+                    DB.child("users/"+authData.uid).once("value",function(userData){
+                        console.log("found uid: " + userData.val().name);
+                        userName = userData.val().name;
+                        $("header").text("שלום "+userName);
+                    })
+                      
+                      
+                    $("header").text("שלום "+email);
                     showQuestions(); //show question page
-                    $("#login").hide(100);                    
-                }
+                    $("#login").hide(100);
+                  }
+                });
             }
             
             // -------------------- Questions List Board -------------

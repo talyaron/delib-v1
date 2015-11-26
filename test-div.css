@@ -1,0 +1,25 @@
+div {
+    border-width: 1px;
+    border-color: aqua;
+    border-style: dashed;
+    //background-color: antiquewhite
+}
+
+#all {
+    position:relative;
+    padding: 10px;
+}
+
+#one {
+    background-color: coral;
+    position: inherit;
+    left: 0%;
+    width: 50%;
+}
+
+#two {
+    position:inherit;
+    left:51%;
+    background-color: #364cc7;
+    width: 49%;
+}

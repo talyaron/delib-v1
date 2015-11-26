@@ -94,16 +94,14 @@ function wizShowOptions(questionKey){
                             "</div>" +
                             "<div class='wizMainWrapText' style='background-color:" + colorStr + "'>" +
                                 "<div dir='rtl' class='wizMainText'>" +
-                                    "<div class='wizMainTextTitle' contenteditable='false' id='" + questionKey + optionKey + "T'" +
-                                    "ondblclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'>"+
+                                    "<div class='wizMainTextTitle' contenteditable='false' id='" + questionKey + optionKey + "T'>" +
                                         optionTitle +
                                     "</div>" +
-                                    "<div class='wizMainTextText' contenteditable='false' id='" + questionKey + optionKey + "'" +
-                                    "ondblclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'>"+
+                                    "<div class='wizMainTextText' contenteditable='false' id='" + questionKey + optionKey + "'>" +
                                         optionText +
                                     "</div>" +
                                 "</div>" +
-                                " <input type='button' class='pure-button pure-button-primary button-edit-margin button-small' value='עריכה' onclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> " +
+                                " <input type='button' class='pure-button pure-button-primary' value='עריכה' onclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> " +
                                 " <span style='color: white' id='" + questionKey + optionKey + "votes'>בעד:" + yesVotesCh + ", נגד: " + noVotesCh + "</span>" +
                             "</div></div>";
             //add option to array of options
@@ -134,7 +132,7 @@ function wizShowOptions(questionKey){
         //create html for header
         var htmlwizQuestion = "<img src='img/plus.png' id='wizPlus' class='clickables' onclick='crearteNewOptionTexbox(" + questionKeyStr + ")'>" +
                     "<img src='img/update.png' id='wizUpdate' class='clickables' onclick='wizShowOptions(" + questionKeyStr + ")'>" +
-                    "<img src='img/close.png' width='35px' class='clickables' onclick='closeWizQuestions(" + questionKeyStr + ")' id='okWizQuestion'>" +                    
+                    "<img src='img/close.png' width='35px' class='clickables' onclick='closeWizQuestions(" + questionKeyStr + ")' id='okWizQuestion'>" +
                     "<div class='wizHeader'>שאלה: " + headerText + "</div><div id='editWizQuestion'></div>";
         
         //build all page wizQuestions HTML
@@ -375,7 +373,7 @@ function editWizOption (questionKey, optionKey) {
                                     "</div>"+
                                 "</div>"+
                                 " <input type='button' class='pure-button pure-button-primary' value='OK' onclick='updateText("+questionKeyStr+","+optionKeyStr+")'> "+
-                                 "<input type='button' class='button-align-right pure-button button-error' value='מחיקה'"+
+                                 "<input type='button' class='pure-button button-error' value='מחיקה'"+
                                 " onclick='deleteWizOption("+questionKeyStr+","+optionKeyStr+")'> "+                                
                             "</div></div>";
         

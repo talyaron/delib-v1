@@ -81,7 +81,7 @@ function wizShowOptions(questionKey){
 
             //build the option HTML
             var optionHtmlCurrent =
-                      "<div class='wizLayout' id='" + optionID + "' >" +
+                      "<div class='wizLayout' id='" + optionID + "' ondblclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")>" +
                             "<div class='wizLeftPanel'>" +
                                 "<div class='wizVoteUp wizButtons clickables' onclick='setWizVote(" + questionKeyStr + "," + optionKeyStr + "," + yesStr + ")'><img src='img/Yes.png' width='30px'>" +
                                 "</div>" +
@@ -102,8 +102,7 @@ function wizShowOptions(questionKey){
                                     "ondblclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'>"+
                                         optionText +
                                     "</div>" +
-                                "</div>" +
-                                " <input type='button' class='pure-button pure-button-primary button-edit-margin button-small' value='עריכה' onclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> " +
+                                "</div>" +                              
                                 " <span style='color: white' id='" + questionKey + optionKey + "votes'>בעד:" + yesVotesCh + ", נגד: " + noVotesCh + "</span>" +
                             "</div></div>";
             //add option to array of options
@@ -134,7 +133,7 @@ function wizShowOptions(questionKey){
         //create html for header
         var htmlwizQuestion = "<img src='img/plus.png' id='wizPlus' class='clickables' onclick='crearteNewOptionTexbox(" + questionKeyStr + ")'>" +
                     "<img src='img/update.png' id='wizUpdate' class='clickables' onclick='wizShowOptions(" + questionKeyStr + ")'>" +
-                    "<img src='img/close.png' width='35px' class='clickables' onclick='closeWizQuestions(" + questionKeyStr + ")' id='okWizQuestion'>" +                    
+                    "<img src='img/close.png' width='35px' class='clickables' onclick='closeWizQuestions(" + questionKeyStr + ")' id='okWizQuestion'>" +
                     "<div class='wizHeader'>שאלה: " + headerText + "</div><div id='editWizQuestion'></div>";
         
         //build all page wizQuestions HTML
@@ -375,7 +374,7 @@ function editWizOption (questionKey, optionKey) {
                                     "</div>"+
                                 "</div>"+
                                 " <input type='button' class='pure-button pure-button-primary' value='OK' onclick='updateText("+questionKeyStr+","+optionKeyStr+")'> "+
-                                 "<input type='button' class='button-align-right pure-button button-error' value='מחיקה'"+
+                                 "<input type='button' class='pure-button button-error' value='מחיקה'"+
                                 " onclick='deleteWizOption("+questionKeyStr+","+optionKeyStr+")'> "+                                
                             "</div></div>";
         
