@@ -13,15 +13,16 @@ var optionsHtmlOld = new Array();
 
 function startWizOptions (questionKey) {
     
+    console.log("start");
     //when an option is added, redraw options
     sessionDB.child("questions/" + questionKey + "/options").limitToLast(1).on("child_added", function(snapshot){
-        console.log("start 'child_added'");
+        console.log("Add - Attached!!!! start 'child_added'");
         wizShowOptions(questionKey);
     })
     
     //when an option is deleted, redraw options
     sessionDB.child("questions/" + questionKey + "/options").on("child_removed", function(snapshot){
-        console.log("start 'child_removed'");
+        console.log("Remove Attached!!!!  start 'child_removed'");
         wizShowOptions(questionKey);
     })
             
@@ -38,7 +39,7 @@ function startWizOptions (questionKey) {
         })
     })
                                                                 
-       
+    wizShowOptions(questionKey);   
 }
 
 function wizShowOptions(questionKey){
@@ -104,7 +105,7 @@ function wizShowOptions(questionKey){
                                     "</div>" +
                                 "</div>" +
                                 " <input type='button' class='pure-button pure-button-primary button-edit-margin button-small' value='עריכה' onclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> " +
-                                " <span style='color: white' id='" + questionKey + optionKey + "votes'>בעד:" + yesVotesCh + ", נגד: " + noVotesCh + "</span>" +
+                                " <span style='color: white' id='" + questionKey + optionKey + "votes'>בעד:" + yesVotesCh + ", נגד: " + noVotesCh + " סך הכל: "+ (yesVotesCh-noVotesCh) + "</span>" +
                             "</div></div>";
             //add option to array of options
             var sumVotes = countVotes(questionKey,optionKey);
@@ -132,9 +133,9 @@ function wizShowOptions(questionKey){
         questionsList = JSON.stringify("questionsList");
         
         //create html for header
-        var htmlwizQuestion = "<img src='img/plus.png' id='wizPlus' class='clickables' onclick='crearteNewOptionTexbox(" + questionKeyStr + ")'>" +
-                    "<img src='img/update.png' id='wizUpdate' class='clickables' onclick='wizShowOptions(" + questionKeyStr + ")'>" +
-                    "<img src='img/close.png' width='35px' class='clickables' onclick='closeWizQuestions(" + questionKeyStr + ")' id='okWizQuestion'>" +                    
+        var htmlwizQuestion = "<img src='img/plus.png' id='wizPlus' class='clickables topButtons' onclick='crearteNewOptionTexbox(" + questionKeyStr + ")'>" +
+                    "<img src='img/update.png' id='wizUpdate' class='clickables topButtons' onclick='wizShowOptions(" + questionKeyStr + ")'>" +
+                    "<img src='img/close.png' id='wizBack' class='clickables topButtons' onclick='closeWizQuestions(" + questionKeyStr + ")' id='okWizQuestion'>" +                    
                     "<div class='wizHeader'>שאלה: " + headerText + "</div><div id='editWizQuestion'></div>";
         
         //build all page wizQuestions HTML
@@ -162,6 +163,7 @@ function wizShowOptions(questionKey){
 function listenToTextsChange (questionKey, optionKey) {
     console.log("ID text had changed: "+ optionKey);
     sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/text").on("value", function (textData) {
+                console.log("Texts - Attached!!!!!!!!!!");
                 $("#" + questionKey + optionKey).html(textData.val().mainText);
                 $("#" + questionKey + optionKey + "T").html(textData.val().title);
             }) 
@@ -212,7 +214,7 @@ function countVotes(questionKey, optionKey){
 function moveOptionsOnVoting (questionKey, optionKey) {
     
     sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").on("value", function(votes){
-        
+         console.log("Move - Attached!!!!!!!!!!");
         //count yes an no vote and Sum all votes....
         var sumVotes = 0;
         var yesVotes = 0;
@@ -399,5 +401,6 @@ function hideEditWizQuestion () {
 
 function closeWizQuestions(questionKey){
     sessionDB.child("questions/"+questionKey).off();
+    sessionDB.child("questions/"+questionKey + "/options").off();
     hideAllEcept("questionsList");
 }

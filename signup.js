@@ -58,3 +58,49 @@ function hideLoginScreen(){
     $("#loginForm").show(400);
     $("#isFirstTime").hide();
 }
+
+function setName(form){
+                var email = form.email.value;
+                var pass = form.pass.value;
+                
+                $("#loginWait").text("רק רגע...");
+                                
+                DB.authWithPassword({
+                  email    : email,
+                  password : pass
+                }, function(error, authData) {
+                  if (error) {
+                    console.log("Login Failed!", error);
+                    
+                    $("#loginMessage2").css("background-color","red");
+                
+                
+                    switch (error.code) {
+                      case "INVALID_PASSWORD":
+                        $("#loginMessage2").text('סיסמא לא נכונה');
+                        break;                  
+                      case "INVALID_USER":
+                         $("#loginMessage2").text('אין משתמש כזה');
+                        break;
+                      default:
+                        $("#loginMessage2").text('הנתונים אינם תקינים');
+                    }
+                      
+                  } else {
+                    console.log("Authenticated successfully with payload:", authData);
+                    
+                    //find user name by uid
+                      console.log("uid: "+authData.uid);
+                    DB.child("users/"+authData.uid).once("value",function(userData){
+                        console.log("found uid: " + userData.val().name);
+                        userName = userData.val().name;
+                        $("header").text("שלום "+userName);
+                    })
+                      
+                      
+                    $("header").text("שלום "+email);
+                    showQuestions(); //show question page
+                    $("#login").hide(100);
+                  }
+                });
+            }
