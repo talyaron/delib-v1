@@ -526,28 +526,43 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', end
     
     border-color: aqua;
     border-width: thin;
-}   
+}  
+
+/*         top buttons on wizOptions  */
+
+.topButtons {
+     width: 35px;      
+}
 
 #wizPlus {
     position: fixed;
     top:1px;
-    left:80px;
+    left:50px;
     
-    width: 25px;   
-   
     z-index: +4;
 }
 
 #wizUpdate {
+    visibility: hidden;
     position: fixed;
     top:1px;
     left:47px;
     
-    width: 25px;  
+   
     
     z-index: +3;
    
 }
+
+#wizBack {
+    position: fixed;
+    top:1px;
+    left:3px;   
+    z-index: +3;
+}
+
+
+/* ----------------------- */
 
 #okWizQuestion {
     position: fixed;
