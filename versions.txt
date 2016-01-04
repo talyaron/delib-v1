@@ -23,4 +23,7 @@
 * Added BSD License
 
 2016-01-02-1816:
-* create link to group
+* create link to group1
+
+2016-01-04-2016:
+* solve "enter" bug.

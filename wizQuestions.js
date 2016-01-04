@@ -13,7 +13,8 @@ var optionsHtmlOld = new Array();
 
 function startWizOptions (questionKey) {
     
-    console.log("start");
+    
+    
     //when an option is added, redraw options
     sessionDB.child("questions/" + questionKey + "/options").limitToLast(1).on("child_added", function(snapshot){
         console.log("Add - Attached!!!! start 'child_added'");
@@ -39,7 +40,8 @@ function startWizOptions (questionKey) {
         })
     })
                                                                 
-    wizShowOptions(questionKey);   
+    wizShowOptions(questionKey);
+    $("#editWizQuestion").hide();
 }
 
 function wizShowOptions(questionKey){
@@ -145,7 +147,7 @@ function wizShowOptions(questionKey){
         var htmlwizQuestion = "<img src='img/plusOption.png' id='wizPlus' class='clickables topButtons' onclick='crearteNewOptionTexbox(" + questionKeyStr + ")'>" +
                     "<img src='img/update.png' id='wizUpdate' class='clickables topButtons' onclick='wizShowOptions(" + questionKeyStr + ")'>" +
                     "<img src='img/close.png' id='wizBack' class='clickables topButtons' onclick='closeWizQuestions(" + questionKeyStr + ")' id='okWizQuestion'>" +                    
-                    "<div class='wizHeader'>שאלה: " + headerText + "</div><div id='editWizQuestion'></div>";
+                    "<div class='wizHeader'>שאלה: " + headerText + "</div>";
         
         //build all page wizQuestions HTML
         for (i in optionsHtml) {
@@ -157,7 +159,7 @@ function wizShowOptions(questionKey){
         hideAllEcept("wizQuestion");
         $("#wizQuestion").show();
         $("#wizQuestion").html(htmlwizQuestion);
-        $("#editWizQuestion").hide();
+        
         
                         
         //move options
