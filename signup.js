@@ -1,14 +1,51 @@
 $("#signup").hide();
 
+
+$("#loginForm").keypress(
+    function(event){
+     if (event.which == '13') {
+        event.preventDefault();
+        
+        
+      }
+});
+
+
+$("#nameOfUser").keyup(function(event){
+    if(event.keyCode == 13){
+        anonAuthLogin();
+    }
+});
+
+//if login was created on DB.....
+DB.onAuth(loginLogout);
+
+//show name of username on header
+function loginLogout(authData){
+    if (authData) {
+        
+        getUserName();
+        $("#login").hide();
+        $("header").html("שלום "+userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
+        showQuestions();
+    } else {
+        $("header").html("");
+        $("#login").show(400);
+        hideAllEcept("login"); 
+    }
+}
+
+//show signup screen
 function signup(){
     console.log("signup");
         
     $("#signup").show();
     $("#loginForm").hide(400);
     
-    DB.unauth();
+    
 }
 
+//Signup
 function setNewUser(form){
     var email = form.email.value;
     var name = form.name.value;
@@ -91,16 +128,37 @@ function setName(form){
                     
                     //find user name by uid
                       console.log("uid: "+authData.uid);
-                    DB.child("users/"+authData.uid).once("value",function(userData){
-                        console.log("found uid: " + userData.val().name);
-                        userName = userData.val().name;
-                        $("header").text("שלום "+userName);
-                    })
+                    
+                    getUserName();  
                       
-                      
-                    $("header").text("שלום "+email);
+                    //$("header").text("שלום "+email);
                     showQuestions(); //show question page
                     $("#login").hide(100);
                   }
                 });
             }
+
+function logout() {
+    console.log("logout");
+    DB.unauth();
+    
+    
+}
+
+function getUserName(){
+    DB.child("users/"+authData.uid).once("value",function(userData){
+        console.log("found uid: " + userData.val().name);
+        userName = userData.val().name;
+        $("header").html("שלום "+userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
+    })
+}
+
+
+function anonAuthLogin (form) {
+    userName = form.name.value;
+    console.log("user name = "+userName);
+    
+    $("#login").hide();
+    $("header").html("שלום "+userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
+    showQuestions();
+}

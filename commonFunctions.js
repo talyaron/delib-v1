@@ -58,3 +58,6 @@ function rollArray(array) {
     //return array;
 }
             
+function generateUIDNotMoreThan1million() {
+    return ("0000" + (Math.random()*Math.pow(36,5) << 0).toString(36)).slice(-5)
+}

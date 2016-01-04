@@ -1,5 +1,5 @@
 // start listen to DB counting of voters
-//wizCountVotes();
+
 
 // --------------- Functions ------------------------
 
@@ -48,10 +48,9 @@ function wizShowOptions(questionKey){
             
     var questionKeyStr = JSON.stringify(questionKey);
   
-    //
-    //sessionDB.child("questions/" + questionKey + "/options").off();
+   
+    
     sessionDB.child("questions/" + questionKey + "/options").once("value", function (optionsDB) {
- //   sessionDB.child("questions/" + questionKey + "/options").once("value", function (optionsDB) {
     
         //array for all the options
         var optionsHtml = new Array();
@@ -79,6 +78,16 @@ function wizShowOptions(questionKey){
             }
 
             var optionID = "Z_" + questionKey + "_" + optionKey + "_div";
+            
+            //get votes
+            var yesVotes, noVotes;
+            var votesObj = new Object();
+            
+            votesObj = countVotes(questionKey,optionKey);
+            yesVotes = votesObj.yes;
+            noVotes = votesObj.no;
+            
+            
 
             //build the option HTML
             var optionHtmlCurrent =
@@ -105,10 +114,10 @@ function wizShowOptions(questionKey){
                                     "</div>" +
                                 "</div>" +
                                 " <input type='button' class='pure-button pure-button-primary button-edit-margin button-small' value='עריכה' onclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> " +
-                                " <span style='color: white' id='" + questionKey + optionKey + "votes'>בעד:" + yesVotesCh + ", נגד: " + noVotesCh + " סך הכל: "+ (yesVotesCh-noVotesCh) + "</span>" +
+                                " <span style='color: white' id='" + questionKey + optionKey + "votes'>בעד:" + yesVotes + ", נגד: " + noVotes + " תוצאה: "+ (yesVotes-noVotes) + "</span>" +
                             "</div></div>";
             //add option to array of options
-            var sumVotes = countVotes(questionKey,optionKey);
+            var sumVotes = yesVotes-noVotes;
             
             optionsHtml.push([sumVotes, optionHtmlCurrent, optionID, -1]); //[score, HTML, ID, location]
             
@@ -133,7 +142,7 @@ function wizShowOptions(questionKey){
         questionsList = JSON.stringify("questionsList");
         
         //create html for header
-        var htmlwizQuestion = "<img src='img/plus.png' id='wizPlus' class='clickables topButtons' onclick='crearteNewOptionTexbox(" + questionKeyStr + ")'>" +
+        var htmlwizQuestion = "<img src='img/plusOption.png' id='wizPlus' class='clickables topButtons' onclick='crearteNewOptionTexbox(" + questionKeyStr + ")'>" +
                     "<img src='img/update.png' id='wizUpdate' class='clickables topButtons' onclick='wizShowOptions(" + questionKeyStr + ")'>" +
                     "<img src='img/close.png' id='wizBack' class='clickables topButtons' onclick='closeWizQuestions(" + questionKeyStr + ")' id='okWizQuestion'>" +                    
                     "<div class='wizHeader'>שאלה: " + headerText + "</div><div id='editWizQuestion'></div>";
@@ -175,7 +184,7 @@ function moveOptions(optionsHtml){
             var optionLocation = optionsHtml[i][3]*(153+10);
             var optionLocationStr = JSON.stringify(optionLocation)+"px";
             
-            $("#"+optionsHtml[i][2]).animate({top: optionLocationStr});
+            $("#"+optionsHtml[i][2]).animate({top: optionLocationStr}, "slow");
             console.log("option["+i+"] "+optionsHtml[i][2] + " location is " + optionLocationStr + "with votes: " + optionsHtml[i][0]);
         }
 }
@@ -199,14 +208,14 @@ function countVotes(questionKey, optionKey){
             }
         })
         $("#" + questionKey + optionKey + "votes")
-            .text("בעד: " + yesVotesCh + ", נגד: " + noVotesCh + ", סך הכל: " + (yesVotesCh - noVotesCh));
+            .text("בעד: " + yesVotesCh + ", נגד: " + noVotesCh + ", תוצאה: " + (yesVotesCh - noVotesCh));
     
        
    //     moveOptions(optionsHtmlOld, questionKey);   
         
     });
     
-    return yesVotesCh - noVotesCh;
+    return {yes: yesVotesCh, no: noVotesCh};
 }
 
 
@@ -214,24 +223,13 @@ function countVotes(questionKey, optionKey){
 function moveOptionsOnVoting (questionKey, optionKey) {
     
     sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").on("value", function(votes){
-         console.log("Move - Attached!!!!!!!!!!");
-        //count yes an no vote and Sum all votes....
-        var sumVotes = 0;
-        var yesVotes = 0;
-        var noVotes = 0;
-        votes.forEach(function(vote) {
-            
-            if( vote.val() === "yes") {
-                yesVotes++;                
-            } else {
-                noVotes++;                
-            }
-        })
         
-        sumVotes = yesVotes - noVotes;
+        var votes = new Object();
+        votes = countVotes(questionKey,optionKey);
+        sumVotes = votes.yes - votes.no;
         
-        $("#" + questionKey + optionKey + "votes")
-            .text("בעד: " + yesVotes + ", נגד: " + noVotes + ", סך הכל: " + sumVotes);
+        //$("#" + questionKey + optionKey + "votes")
+        //    .text("בעד: " + yesVotes + ", נגד: " + noVotes + ", סך הכל: " + sumVotes);
         
         var optionsHtml = new Array();
         optionsHtml = optionsHtmlOld;

@@ -18,3 +18,9 @@
 2015-09-30-2313:
 * new wizQuestions, more orderd
 
+2015-12-26-1921:
+* Change user login to free/registered
+* Added BSD License
+
+2016-01-02-1816:
+* create link to group

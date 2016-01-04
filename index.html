@@ -23,37 +23,22 @@
         <!-------- login screen ---------->
         
         <div id="login">
-            <div id="signup">
-                <div id="signupForm">
-                    <form class="pure-form pure-form-stacked" onkeypress ="setNewUser(this.form)">
-                        <span id="sessionName" width="150px"><b>הרשמה</b></span>                     
-                    <div id="loginMessage"></div>
-                    <lable>פרטי כניסה:</label>
-                    <input type="text" id="signupNameForm" name="name" size="20" placeholder="שם פרטי ושם משפחה">
-                    <input type="email" id="signupEmailForm" name="email" size="20" placeholder="email">
-                    <input type="password" id="signupPassForm" name="pass" size="20" placeholder="סיסמא">
-                    <input type="button" class="pure-button action-button" value="אישור" onclick="setNewUser(this.form)">&nbsp;&nbsp;&nbsp;<span onclick="hideLoginScreen()" style="color:blue" class="clickables">ביטול</span>
-                    <div id="loginMessage"></div>
-                </form>
-                    
-                </div>     
-            </div>
+            
             <div id="loginForm">
-                    <form class="pure-form pure-form-stacked" onkeypress ="setName(this.form)">
-                        <span id="sessionName" width="150px"><b>החלטה משתפת</b></span><br>                        
-                    <span>פרטי כניסה:</span>
-                    <div id="loginMessage2"></div>
-                    <input type="email" id="emailForm" name="email" size="20" placeholder="Email">
-                    <input type="password" id="passForm" name="pass" size="20" placeholder="סיסמא">
-                    <input type="button" class="pure-button action-button" value="אישור" onclick="setName(this.form)"><label id="loginWait"></label><br>
-                    <span id="isFirstTime">פעם ראשונה כאן?  
-                        <input type="button" class="pure-button pure-button-primary button-small" value="הרשם/י" onclick="signup()">
-                    </span>
+                    <form class="pure-form" id="loginForm">
+                    <span id="sessionName" width="150px"><b>דליב: מחליטים ביחד</b></span><br><br>
+                    <input type="text" id="nameOfUser" name="name" size="20" placeholder="שם פרטי ושם משפחה" autocomplete="on" autofocus>                
+                    <input type="button" class="pure-button action-button" value="כניסה" onclick="anonAuthLogin(this.form)" id="enterQuestions">                    
                 </form>
-                <div id="cc"><br>פותח על ידי <a href="http://bit.ly/1HZMMZS" target='_blank'>צוות החלטה משתפת - הסדנא לידע ציבורי</a><br> - כל הזכויות שמורות
+                <br><br><br><br><br><br>
+                <div id="cc"><br>פותח על ידי <a href="http://bit.ly/1HZMMZS" target='_blank'>צוות החלטה משתפת - הסדנא לידע ציבורי</a><br><br><br>
+          <div id="license">התוכנה באתר נמצאת תחת <a href="LICENSE.txt">רשיון קוד פתוח</a></div>         
 </div>
-            </div>            
+                
+            </div> 
+            
         </div>
+        
         
         <!---------- header ---------->
         
@@ -71,6 +56,8 @@
             <div id="results"></div>
             <div id="titleHead" onclick="ShowHideExplan()"></div>
             <div id="explain"></div>
+            <div id="info" onclick="closeInfo()"></div>
+            <div id="infoBox" onclick="closeInfo()"><b>הסבר: </b>ksjdhfksjfhkjsdhkj sksdhf ksdhf kjsdh ksjdhf ksjdhf jksdfh ksdh fksjdfh ksj sdjk hkjsdjh ksdjhskdhfksjddhfksj dfhksjdhkjsjsdh kjsdhf ksdh fksddhf ksdh fksdjhf kjsddh fksjdhfkjsdfh</div>
             
             <img src="img/close.png" width="35px" class="clickables" onclick="hideAllEcept('questionsList')" id="okQuestion">
         </div>
@@ -94,7 +81,8 @@
         <!------------- Chat ------------>
         <div id="chat"></div>
     
-        <!-- <script src="move.js"></script>  -->
+       
+        <script src="routing.js"></script>
         <script src="simpleVoting.js"></script>
         <script src="wizQuestions.js"></script>    
         <script src="chat.js"></script>
