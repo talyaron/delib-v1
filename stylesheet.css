@@ -57,7 +57,11 @@ header {
 }
 
 #cc{
+    
+    position: absolute;
+    top:200px;
     font-size: 0.7em;
+    width: 300px;
 }
 
 #loginForm {

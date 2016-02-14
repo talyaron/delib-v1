@@ -7,9 +7,6 @@
         <script src="firebase.js"></script>
         <script src="jquery-1.11.2.min.js"></script>
         <script src="commonFunctions.js"></script>
-  <!--      <script src="move.js"></script> -->
-      
-        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
@@ -25,19 +22,25 @@
         <div id="login">
             
             <div id="loginForm">
-                    <form class="pure-form" id="loginForm">
+                <form class="pure-form" id="loginForm">
                     <span id="sessionName" width="150px"><b>דליב: מחליטים ביחד</b></span><br><br>
                     <input type="text" id="nameOfUser" name="name" size="20" placeholder="שם פרטי ושם משפחה" autocomplete="on" autofocus>                
-                    <input type="button" class="pure-button action-button" value="כניסה" onclick="anonAuthLogin(this.form)" id="enterQuestions">                    
+                    <br>  
+                    <input type="password" id="nameOfUser" name="pass" size="20" placeholder="סיסמא" autocomplete="on" autofocus>                
+                    <input type="button" class="pure-button" value="התחברות" onclick="anonymousAuthLogin(this.form)" id="enterQuestions"> <br><br>
+                    <input type="button" class="pure-button pure-button-primary" value="התחברות עם פייסבוק" onclick="anonAuthLogin(this.form)" id="enterQuestions"> 
                 </form>
+                
                 <br><br><br><br><br><br>
                 <div id="cc"><br>פותח על ידי <a href="http://bit.ly/1HZMMZS" target='_blank'>צוות החלטה משתפת - הסדנא לידע ציבורי</a><br><br><br>
-          <div id="license">התוכנה באתר נמצאת תחת <a href="LICENSE.txt">רשיון קוד פתוח</a></div>         
-</div>
+                    <div id="license">התוכנה באתר נמצאת תחת <a href="LICENSE.txt">רשיון קוד פתוח</a></div>         
+                </div>
                 
             </div> 
             
         </div>
+                
+            
         
         
         <!---------- header ---------->

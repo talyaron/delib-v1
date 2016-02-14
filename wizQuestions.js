@@ -12,18 +12,14 @@ var optionsHtmlOld = new Array();
 
 
 function startWizOptions (questionKey) {
-    
-    
-    
+  
     //when an option is added, redraw options
     sessionDB.child("questions/" + questionKey + "/options").limitToLast(1).on("child_added", function(snapshot){
-        console.log("Add - Attached!!!! start 'child_added'");
         wizShowOptions(questionKey);
     })
     
     //when an option is deleted, redraw options
-    sessionDB.child("questions/" + questionKey + "/options").on("child_removed", function(snapshot){
-        console.log("Remove Attached!!!!  start 'child_removed'");
+    sessionDB.child("questions/" + questionKey + "/options").on("child_removed", function(snapshot){        
         wizShowOptions(questionKey);
     })
             
@@ -64,7 +60,7 @@ function wizShowOptions(questionKey){
             var optionTitle = optionDB.val().text.title;
             var optionText = optionDB.val().text.mainText;
             var optionColor = optionDB.val().text.color;
-
+            
             
             //Stringfing variable for the HTML of the option
             
@@ -79,7 +75,7 @@ function wizShowOptions(questionKey){
                 var colorStr = optionColor;
             }
 
-            var optionID = "Z_" + questionKey + "_" + optionKey + "_div";
+            var optionID = questionKey + "_" + optionKey + "_div";
             
             //get votes
             var yesVotes, noVotes;
@@ -88,8 +84,6 @@ function wizShowOptions(questionKey){
             votesObj = countVotes(questionKey,optionKey);
             yesVotes = votesObj.yes;
             noVotes = votesObj.no;
-            
-            
 
             //build the option HTML
             var optionHtmlCurrent =
@@ -239,12 +233,11 @@ function moveOptionsOnVoting (questionKey, optionKey) {
         //find options in array and add vote count to the option
         var optionLocation;
         for (i in optionsHtml){
-            if (optionsHtml[i][2] == "Z_"+ questionKey + "_" + optionKey + "_div"){
-                console.log("Found option "+ "Z_"+ questionKey + "_" + optionKey + "_div");
+            if (optionsHtml[i][2] == questionKey + "_" + optionKey + "_div"){                
                 optionsHtml[i][0] = sumVotes;
                 break;
             };
-            console.log ("couldn't find option: "+ "Z_"+ questionKey + "_" + optionKey + "_div");
+            
         }
         
         //order in a new order        
@@ -343,6 +336,7 @@ function deleteWizOption (questionKey, optionKey){
     }
     
     sessionDB.child("questions/"+questionKey+"/options/"+optionKey).remove();
+    $("#editWizQuestion").hide();
         
 }
 

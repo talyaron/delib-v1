@@ -1,21 +1,6 @@
-$("#signup").hide();
+//$("#signup").hide();
 
-
-$("#loginForm").keypress(
-    function(event){
-     if (event.which == '13') {
-        event.preventDefault();
-        
-        
-      }
-});
-
-
-$("#nameOfUser").keyup(function(event){
-    if(event.keyCode == 13){
-        anonAuthLogin();
-    }
-});
+var auth = new Object();
 
 //if login was created on DB.....
 DB.onAuth(loginLogout);
@@ -23,17 +8,36 @@ DB.onAuth(loginLogout);
 //show name of username on header
 function loginLogout(authData){
     if (authData) {
-        
-        getUserName();
+        console.log("logedin");
+        //getUserName();
         $("#login").hide();
         $("header").html("שלום "+userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
         showQuestions();
     } else {
+        console.log("logedout");
         $("header").html("");
         $("#login").show(400);
         hideAllEcept("login"); 
     }
 }
+
+
+$("#loginForm").keypress(
+    function(event){
+     if (event.which == '13') {
+        event.preventDefault();
+        
+      }
+});
+
+
+$("#nameOfUser").keyup(function(event){
+    if(event.keyCode == 13){
+        anonymousAuthLogin();
+    }
+});
+
+
 
 //show signup screen
 function signup(){
@@ -96,6 +100,7 @@ function hideLoginScreen(){
     $("#isFirstTime").hide();
 }
 
+/*
 function setName(form){
                 var email = form.email.value;
                 var pass = form.pass.value;
@@ -137,13 +142,14 @@ function setName(form){
                   }
                 });
             }
-
+*/
 function logout() {
     console.log("logout");
     DB.unauth();
     
     
 }
+
 
 function getUserName(){
     DB.child("users/"+authData.uid).once("value",function(userData){
@@ -154,11 +160,28 @@ function getUserName(){
 }
 
 
-function anonAuthLogin (form) {
-    userName = form.name.value;
-    console.log("user name = "+userName);
+function anonymousAuthLogin (form) {
+    auth.userName = form.name.value;
+    userName = auth.userName;
+    console.log("user: "+auth.userName)
     
-    $("#login").hide();
-    $("header").html("שלום "+userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
-    showQuestions();
+    DB.authAnonymously(function(error, authData) {
+                  if (error) {
+                    console.log("Login Failed!", error);
+                  } else {
+                    console.log("Authenticated successfully with payload:", authData);
+                      
+                    auth = authData;
+                    auth.image = "img/avatar-male.png"
+                    auth.userName = form.name.value;
+                      
+                    console.log(auth.userName +", "+ auth.uid+", "+ auth.image+", "+auth.userName+", "+auth.token)
+                    
+                    $("#login").hide();
+                    $("header").html("שלום "+userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
+                    showQuestions();
+                    
+                  }
+                });    
+    
 }

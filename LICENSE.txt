@@ -1,4 +1,4 @@
-Copyright (c) 2015, Tal Yaron.
+Copyright (c) 2015, Tal Yaron and other contributers at: https://github.com/talyaron/common-decision2/graphs/contributors.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,

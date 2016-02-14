@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>קבוצות</title>
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="img/favicon.png"/>
+        <script src="firebase.js"></script>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="commonFunctions.js"></script>
+  <!--      <script src="move.js"></script> -->
+      
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+                                
+        <link rel=stylesheet type="text/css" href="groups.css">
+        
+  </head>
+  <body dir="rtl">
+    <body>
+      
+      <div id="groupsDivs">
+        
+      </div>
+      <script>
+        var groupsDB = new Firebase("https://votewiz.firebaseio.com/sessions");
+        
+        //get all groups
+        groupsDB.on("value", function(groups){
+          var groupsHTML = "";
+          groups.forEach(function(group){
+            var groupName = group.val().details.name;
+            var groupKey = group.key();
+            var groupKeyStr = JSON.stringify(groupKey);
+            
+            //get number of questions in each group
+            var numberOfQuestions = 0;
+            
+            group.child("questions").forEach(function(question){
+              numberOfQuestions++;
+            });
+            
+            groupsHTML += "<div id='"+groupKey+"'><p>שם הקבוצה: <a href='http://delib.org/index.html?"+groupKey+"' target=' _blank'>"+groupName+"</a>"+
+        "&nbsp"+
+              "מספר שאלות - "+numberOfQuestions+"&nbsp"+
+              "<input type='button' class='pure-button' onclick=deleteGroup("+groupKeyStr+") value='מחיקה'></p></div>"
+            
+            console.log("group: "+groupName+", key is: "+groupKey);
+          })
+          $("#groupsDivs").html(groupsHTML);
+        });
+        
+        function deleteGroup(groupKey){
+          var isDelete = confirm("are you sure you want to delete "+groupKey+"!?");
+          console.log(isDelete);
+          if (isDelete){
+            groupsDB.child(groupKey).remove();
+          };
+        };
+      </script>
+    
+    </body>
+  </body>
+</html>
+      

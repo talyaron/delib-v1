@@ -27,3 +27,6 @@
 
 2016-01-04-2016:
 * solve "enter" bug.
+
+2016-01-18:
+* develope the ability to create reach text, including pictures in wizQwuestions.
