@@ -443,7 +443,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', end
     color: white;
     font-weight: 600;
     
-    cursor: pointer;  
+    cursor: pointer; 
+    overflow-y:auto;
     
     box-shadow: 5px 5px 5px gray;
     
@@ -613,7 +614,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', end
     font-weight: 900;
     text-align: center;
     
-    background-color: aqua;
+    background-color: darkblue;
     opacity: 0.8;
     
     z-index:+2;
