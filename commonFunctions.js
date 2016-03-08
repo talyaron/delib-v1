@@ -61,3 +61,16 @@ function rollArray(array) {
 function generateUIDNotMoreThan1million() {
     return ("0000" + (Math.random()*Math.pow(36,5) << 0).toString(36)).slice(-5)
 }
+
+function hideAllEcept(panel){
+                
+    $("#newQuestion").hide();            
+    $("#editQuestions").hide();
+    $("#login").hide();
+    $("#questionsList").hide();
+    $("#simplVoting").hide();
+    $("#wizQuestion").hide();
+    $("#chat").hide();
+        
+    $("#"+panel).show();
+}

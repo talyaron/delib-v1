@@ -10,6 +10,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+        
+         <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
                         
         <link rel=stylesheet type="text/css" href="stylesheet.css">
         
@@ -24,11 +30,10 @@
             <div id="loginForm">
                 <form class="pure-form" id="loginForm">
                     <span id="sessionName" width="150px"><b>דליב: מחליטים ביחד</b></span><br><br>
-                    <input type="text" id="nameOfUser" name="name" size="20" placeholder="שם פרטי ושם משפחה" autocomplete="on" autofocus>                
-                    <br>  
-                    <input type="password" id="nameOfUser" name="pass" size="20" placeholder="סיסמא" autocomplete="on" autofocus>                
-                    <input type="button" class="pure-button" value="התחברות" onclick="anonymousAuthLogin(this.form)" id="enterQuestions"> <br><br>
-                    <input type="button" class="pure-button pure-button-primary" value="התחברות עם פייסבוק" onclick="anonAuthLogin(this.form)" id="enterQuestions"> 
+                    <legend>התחברות אנונימית</legend>
+                    <input type="text" id="nameOfUser" name="name" size="8" placeholder="שם בדוי או שם אמיתי" autofocus>
+                    <input type="button" class="pure-button" value="התחברות" onclick="anonymousAuthLogin(this.form)">
+                    
                 </form>
                 
                 <br><br><br><br><br><br>
@@ -53,17 +58,7 @@
         <div id="questionsList"></div>
         
         <!-------------- Voting page ------------------------>
-        <div id="questionPage">            
-            
-            
-            <div id="results"></div>
-            <div id="titleHead" onclick="ShowHideExplan()"></div>
-            <div id="explain"></div>
-            <div id="info" onclick="closeInfo()"></div>
-            <div id="infoBox" onclick="closeInfo()"><b>הסבר: </b>ksjdhfksjfhkjsdhkj sksdhf ksdhf kjsdh ksjdhf ksjdhf jksdfh ksdh fksjdfh ksj sdjk hkjsdjh ksdjhskdhfksjddhfksj dfhksjdhkjsjsdh kjsdhf ksdh fksddhf ksdh fksdjhf kjsddh fksjdhfkjsdfh</div>
-            
-            <img src="img/close.png" width="35px" class="clickables" onclick="hideAllEcept('questionsList')" id="okQuestion">
-        </div>
+        <div id="simplVoting"></div>
         
         <!--------------Wiz questions Page --------------------->
         <div id="wizQuestion"></div>
@@ -88,7 +83,9 @@
     
        
         <script src="routing.js"></script>
+        <script src="questionsBoard.js"></script>
         <script src="simpleVoting.js"></script>
+        <script src="editSetQuestions.js"></script>
         <script src="wizQuestions.js"></script>    
         <script src="chat.js"></script>
         <script src="signup.js"></script>
