@@ -87,7 +87,9 @@
                     
                     
                     for (i in optionsArray){
-                        voteDivHTML += '<div class="resultsBarEnv clickables" id="'+optionsArray[i][2]+'voteCol" style="left:'+(0+i*(colWidth+2))+'%; width: '+colWidth+'%"><div class="voteButtons" id="'+optionsArray[i][2]+'voteBtn" onclick="voteAssign(`'+questionName+'`, `'+optionsArray[i][2]+'`)">'+optionsArray[i][0]+'</div><div>הסבר</div></div>'
+                        voteDivHTML += '<div class="resultsBarEnv clickables" id="'+optionsArray[i][2]+'voteCol" style="left:'+(0+i*(colWidth+2))+'%; width: '+colWidth+'%">'+
+                            '<div class="resultsBar" id="'+optionsArray[i][2]+'votsDiv"></div>'+
+                            '<div class="voteButtons" id="'+optionsArray[i][2]+'voteBtn" onclick="voteAssign(`'+questionName+'`, `'+optionsArray[i][2]+'`)">'+optionsArray[i][0]+'</div><div>הסבר</div></div>'
                     }
                     
                     
@@ -106,10 +108,11 @@
                         }
                     }
                     
-                    if (voteButtonsHeight>120){voteButtonsHeight = 120}
+                    if (voteButtonsHeight>120){voteButtonsHeight = 120};
                     
-                   
+                    
                     $(".voteButtons").height(voteButtonsHeight);
+                    
                     console.log("Height max: "+"#"+optionsArray[i][2]+"voteBtn: "+ voteButtonsHeight)
                         
                     
@@ -190,19 +193,18 @@ function listenToChangesInVotes (question, option, optionTitle){
     //listen to changes in the database
     
     sessionDB.child("questions/"+question+"/options/"+option+"/votes").on("value", function(votes){
-                        
-        $("#"+option+"voteCol").html('<div class="voteButtons" id="'+option+'voteBtn" onclick="voteAssign(`'+question+'`, `'+option+'`)">'+optionTitle+'</div><div>הסבר</div>');
         
+        //create div for votes
+         $("#"+option+"votsDiv").html("");
         
-        
-        console.log("option changed: " + option)
-        
-        //change colunms of votes on screen               
+        //change columns of votes on screen               
         votes.forEach(function(vote){
             if (vote.val() == "yes"){                
                                 
-                $("#"+option+"voteCol").prepend("<div class='resultsBar'>"+vote.key()+"</div>");
+                $("#"+option+"votsDiv").prepend("<div>"+vote.key()+"</div>");
             }
+            
+            //$( "#"+option+"voteCol div").first().css( "background-color", "red" );
         }) 
                         
     })
