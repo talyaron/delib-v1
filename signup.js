@@ -15,6 +15,8 @@ function loginLogout(authData){
             //try to get it form window
             userName = localStorage.getItem("userName");
             console.log("got user name from window:" + userName)
+        } else if (userName = null){
+            logout();
         }
         
         $("#login").hide();
