@@ -10,6 +10,13 @@ function loginLogout(authData){
     if (authData) {
         console.log("logedin");
         //getUserName();
+        
+        if (userName == "" || userName == undefined){
+            //try to get it form window
+            userName = localStorage.getItem("userName");
+            console.log("got user name from window:" + userName)
+        }
+        
         $("#login").hide();
         $("header").html("שלום "+userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
         showQuestions();
@@ -162,7 +169,12 @@ function getUserName(){
 
 function anonymousAuthLogin (form) {
     auth.userName = form.name.value;
+    
     userName = auth.userName;
+    
+    //save userName in window (to prevent lose of name in a case of reload)
+    localStorage.setItem("userName", userName);
+    
     console.log("user: "+auth.userName)
     
     DB.authAnonymously(function(error, authData) {
