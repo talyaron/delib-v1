@@ -5,19 +5,19 @@ var auth = new Object();
 //if login was created on DB.....
 DB.onAuth(loginLogout);
 
-//show name of username on header
+//check if logged or signout
 function loginLogout(authData){
     if (authData) {
         console.log("logedin");
         //getUserName();
         
-        if (userName == "" || userName == undefined){
+        var userNameWindow = localStorage.getItem("userName");
+        
+        if (userName == "" && userNameWindow != null ){
             //try to get it form window
-            userName = localStorage.getItem("userName");
+            userName = userNameWindow;
             console.log("got user name from window:" + userName)
-        } else if (userName = null){
-            logout();
-        }
+        } 
         
         $("#login").hide();
         $("header").html("שלום "+userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
@@ -172,12 +172,15 @@ function getUserName(){
 function anonymousAuthLogin (form) {
     auth.userName = form.name.value;
     
-    userName = auth.userName;
+    userName = form.name.value;
+    console.log("user name in login anonymous: " + userName);
     
     //save userName in window (to prevent lose of name in a case of reload)
     localStorage.setItem("userName", userName);
     
     console.log("user: "+auth.userName)
+    
+    //set login to DB
     
     DB.authAnonymously(function(error, authData) {
                   if (error) {
@@ -188,6 +191,7 @@ function anonymousAuthLogin (form) {
                     auth = authData;
                     auth.image = "img/avatar-male.png"
                     auth.userName = form.name.value;
+                    userName = form.name.value;
                       
                     console.log(auth.userName +", "+ auth.uid+", "+ auth.image+", "+auth.userName+", "+auth.token)
                     
