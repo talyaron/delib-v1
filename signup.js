@@ -200,6 +200,21 @@ function anonymousAuthLogin (form) {
                     showQuestions();
                     
                   }
-                });    
-    
+    });
 }
+    
+//if not group owner, hide edit icon
+//get group owner
+    sessionDB.child("details").once("value", function(snapshot){
+        var groupOwner = snapshot.val().owner;
+        console.log("groupOwner: "+groupOwner+", userName: "+userName);
+        if (groupOwner == userName || groupOwner == undefined){
+            $(".editQuestionPen").css("display","inline");
+            console.log("Show!");
+        } else {
+            $(".editQuestionPen").css("display","none");
+            console.log("Hide!");
+        }
+})
+    
+

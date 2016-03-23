@@ -65,19 +65,19 @@ function setTypeOfQuestion(type){
                     if (typeOfQuestion === "wiz"){ //if question of wiz of the group
                         questionsDivs += "<div class='questionsDivs wizQuestionsDivs'>"+
                             "<span id='buttonTest' class='clickables' onclick='startWizOptions("+questionKey+")'>"+questionDB.val().header+"</span>"+
-                            "<img src='img/edit2.png' class='clickables' height='25px' align='left' onclick='editQuestion("+questionKey+")'>"+
+                            "<img src='img/edit2.png' class='clickables editQuestionPen' height='25px' align='left' onclick='editQuestion("+questionKey+")'>"+
                         "</div>"
                     } else {                       // for regular question
                     
                         questionsDivs += "<div class='questionsDivs'>"+
                         "<span id='buttonTest' class='clickables' onclick='voteQuestion("+questionKey+")'>"+questionDB.val().header+"</span>"+
-                        "<img src='img/edit2.png' class='clickables' height='25px' align='left' onclick='editQuestion("+questionKey+")'>"+
+                        "<img src='img/edit2.png' class='clickables editQuestionPen' height='25px' align='left' onclick='editQuestion("+questionKey+")'>"+
                         "</div>"
                     }
                     
                     
                 })
-                questionsDivs +="<div id='plusDiv' class='clickables'><img src='img/plus.png' id='plusQuestion' onclick='newQuestion()'><img src='img/plusGroup.png' id='plusGroup' onclick='openNewGroupWindow()'></div><div id='addNewGroup'><span>שם הקבוצה החדשה:</span><form clas='pure-form'><input type='text' size='40' autofocus name='name'>&nbsp<input type='button' class='pure-button' value='קבוצה חדשה' onclick='newGroup(this.form)'>&nbsp<input type='button' class='pure-button' value='ביטול' onclick='closeNewGroupWindow()'></form></div>"
+                questionsDivs +="<div id='plusDiv' class='clickables'><img src='img/plus.png' id='plusQuestion' onclick='editQuestion()'><img src='img/plusGroup.png' id='plusGroup' onclick='openNewGroupWindow()'><a href='whatsapp://send?text=delib.org/index.html?"+groupAddress+"'><img src='img/whatsapp.png' id='whatsappLink'></a></div><div id='addNewGroup'><span>שם הקבוצה החדשה:</span><form clas='pure-form'><input type='text' size='40' autofocus name='name'>&nbsp<input type='button' class='pure-button' value='קבוצה חדשה' onclick='newGroup(this.form)'>&nbsp<input type='button' class='pure-button' value='ביטול' onclick='closeNewGroupWindow()'></form></div>"
                 $("#questionsList").html(questionsDivs);
                 $("#addNewGroup").hide();
             })
@@ -89,5 +89,20 @@ function setTypeOfQuestion(type){
                 $("#info").hide();
                 $("#infoBox").hide();
             }
+
+//if not group owner, hide edit icon
+//get group owner
+sessionDB.child("details").once("value", function(snapshot){
+        var groupOwner = snapshot.val().owner;
+        console.log("groupOwner: "+groupOwner+", userName: "+userName);
+        if (groupOwner == userName || groupOwner == undefined){
+            $(".editQuestionPen").css("display","inline");
+            console.log("Show!");
+        } else {
+            $(".editQuestionPen").css("display","none");
+            console.log("Hide!");
+        }
+});
+
 
             

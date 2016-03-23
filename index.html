@@ -9,13 +9,20 @@
         <script src="commonFunctions.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         
-        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+        <!-- Bootstrap switch -->
+        <link href="boot-strap-switch/bootstrap.css" rel="stylesheet">
+        <link href="boot-strap-switch/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
+        <script src="boot-strap-switch/js/bootstrap-switch.min.js"></script>
         
-         <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+        <!-- <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"> -->
+        
+        <!--
+         <!-- Compiled and minified CSS --
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+          <!-- Compiled and minified JavaScript --
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+       -->
                         
         <link rel=stylesheet type="text/css" href="stylesheet.css">
         
@@ -28,11 +35,11 @@
         <div id="login">
             
             <div id="loginForm">
-                <form class="pure-form" id="loginForm">
+                <form class="form-group" id="loginForm">
                     <span id="sessionName" width="150px"><b>דליב: מחליטים ביחד</b></span><br><br>
                     <legend>התחברות אנונימית</legend>
-                    <input type="text" id="nameOfUser" name="name" size="8" placeholder="שם בדוי או שם אמיתי" autofocus>
-                    <input type="button" class="pure-button" value="התחברות" onclick="anonymousAuthLogin(this.form)">
+                    <input type="text" class="form-control" id="nameOfUser" name="name" size="8" placeholder="שם בדוי או שם אמיתי" autofocus>
+                    <input type="button" class="btn btn-primary" value="התחברות" onclick="anonymousAuthLogin(this.form)">
                     
                 </form>
                 

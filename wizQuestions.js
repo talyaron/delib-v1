@@ -291,7 +291,7 @@ function crearteNewOptionTexbox (questionKey) {
     
     var questionKeyStr = JSON.stringify(questionKey);
         
-    var htmlText = "<div id='newOptionBoard'>אנא הציעו הצעה חדשה:<form class='pure-form'><input name='title' type='text' placeholder='כותרת ההצעה' size='20'><textarea name='text' placeholder='הסבר על ההצעה' rows='4' cols='30'></textarea><input type='button' value='אישור' class='pure-button pure-button-primary' onclick='createOption("+questionKeyStr+", this.form)'> <input type='button' class='pure-button button-warning' value='ביטול' onclick='hideEditWizQuestion()'></form></div>";
+    var htmlText = "<div id='newOptionBoard'>אנא הציעו הצעה חדשה:<form class='form-group'><input name='title' class='form-control' type='text' placeholder='כותרת ההצעה' size='20'><textarea name='text' class='form-control' placeholder='הסבר על ההצעה' rows='4' cols='30'></textarea><input type='button' value='אישור' class='btn btn-success' onclick='createOption("+questionKeyStr+", this.form)'> <input type='button' class='btn btn-warning' value='ביטול' onclick='hideEditWizQuestion()'></form></div>";
         
         $("#editWizQuestion").html(htmlText).show(500);
     

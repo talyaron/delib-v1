@@ -32,10 +32,11 @@
                     
                     //search options with "true show"
                     
-                   
+                   var indexOfOptions = 0;
+                    
                     options.forEach(function(option){
                         
-                        var isShow = option.val().showOnRegVote;                        
+                        var isShow = option.val().showOnRegVote;                         
                         
                         // add to array if true show
                         if (isShow){
@@ -43,10 +44,13 @@
                             var optionTitle = option.val().text.title;
                             var optionBody = option.val().text.mainText;
                             
+                            if (optionTitle == ""){optionTitle = "אפשרות "+indexOfOptions}
+                            
                             console.log("infoTit: " + optionTitle);
                             
                             optionsArray.push([optionTitle, optionBody, option.key()]);
                         }
+                        indexOfOptions ++;
                         
                     })
                     
@@ -113,8 +117,7 @@
                     
                     $(".voteButtons").height(voteButtonsHeight);
                     
-                    console.log("Height max: "+"#"+optionsArray[i][2]+"voteBtn: "+ voteButtonsHeight)
-                        
+                    console.log("Height max: "+"#"+optionsArray[i][2]+"voteBtn: "+ voteButtonsHeight);                     
                     
                     
                     
