@@ -59,7 +59,9 @@
                     //show options 
                     var voteDivHTML = '<div id="votePanel">'+
                         '<div class="wizHeader"><span>שאלה: ' + questionHeader + '</span>'+
-                        '<img src="img/close.png" id="backButtonSimpleVote" class="backButtons clickables" onclick="hideAllEcept(`questionsList`)" id="okQuestion"></div>';
+                        '<img src="img/close.png" id="backButtonSimpleVote" class="backButtons clickables" onclick="setHideAllEcept()"  id="okQuestion"></div>';
+                        
+                   
                     var divCol;
                     var typeOfVote;
                     
@@ -91,10 +93,12 @@
                     
                     
                     for (i in optionsArray){
-                        voteDivHTML += '<div class="resultsBarEnv clickables" id="'+optionsArray[i][2]+'voteCol" style="left:'+(0+i*(colWidth+2))+'%; width: '+colWidth+'%">'+
+                      var optionIDStr = "'" + optionsArray[i][2] + "'"
+                      var questionNameStr = "'" + questionName + "'"
+
+                        voteDivHTML += '<div class="resultsBarEnv" id="'+optionsArray[i][2]+'voteCol" style="left:'+(0+i*(colWidth+2))+'%; width: '+colWidth+'%">'+
                             '<div class="resultsBar" id="'+optionsArray[i][2]+'votsDiv"></div>'+
-                            '<div class="voteButtons" id="'+optionsArray[i][2]+'voteBtn" onclick="voteAssign(`'+questionName+'`, `'+optionsArray[i][2]+'`)">'+optionsArray[i][0]+'</div><div>הסבר</div></div>'
-                    }
+                            '<div class="voteButtons clickables" id="'+optionsArray[i][2]+'voteBtn" onclick="voteAssign(' + questionNameStr + ',' + optionIDStr + ')">'+ optionsArray[i][0] +'</div><div>הסבר</div></div>' }
                     
                     
                     voteDivHTML += '</div>';
@@ -211,7 +215,8 @@ function listenToChangesInVotes (question, option, optionTitle){
         }) 
                         
     })
+} 
+
+function setHideAllEcept() {
+  hideAllEcept("questionsList");
 }
-
-
-           

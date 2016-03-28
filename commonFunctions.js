@@ -72,6 +72,8 @@ function generateUIDNotMoreThan1million() {
 }
 
 function hideAllEcept(panel){
+    
+    console.log("hideAllEcept");
                 
     $("#newQuestion").hide();            
     $("#editQuestions").hide();

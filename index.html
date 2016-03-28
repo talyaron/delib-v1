@@ -14,82 +14,45 @@
         <link href="boot-strap-switch/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
         <script src="boot-strap-switch/js/bootstrap-switch.min.js"></script>
         
-        <!-- <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"> -->
         
-        <!--
-         <!-- Compiled and minified CSS --
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-
-          <!-- Compiled and minified JavaScript --
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-       -->
-                        
+        <!-- Compiled and minified CSS -->
         <link rel=stylesheet type="text/css" href="stylesheet.css">
         
        
     </head>
     <body dir="rtl">
-        
-        <!-------- login screen ---------->
-        
         <div id="login">
-            
             <div id="loginForm">
                 <form class="form-group" id="loginForm">
                     <span id="sessionName" width="150px"><b>דליב: מחליטים ביחד</b></span><br><br>
                     <legend>התחברות אנונימית</legend>
                     <input type="text" class="form-control" id="nameOfUser" name="name" size="8" placeholder="שם בדוי או שם אמיתי" autofocus>
                     <input type="button" class="btn btn-primary" value="התחברות" onclick="anonymousAuthLogin(this.form)">
-                    
                 </form>
-                
                 <br><br><br><br><br><br>
                 <div id="cc"><br>פותח על ידי <a href="http://bit.ly/1HZMMZS" target='_blank'>צוות החלטה משתפת - הסדנא לידע ציבורי</a><br><br><br>
                     <div id="license">התוכנה באתר נמצאת תחת <a href="LICENSE.txt">רשיון קוד פתוח</a></div>         
                 </div>
-                
             </div> 
-            
         </div>
-                
-            
-        
-        
-        <!---------- header ---------->
-        
+
         <header></header>
-        
-        <!---------------------  SIMPLE VOTING ------------------------>
-        
-        
-        <!-------------- Voting page ------------------------>
+
         <div id="simplVoting"></div>
-        
-        <!-------------- Questions page ------------------------>
-        
         <div id="questionsList"></div>
-        
-        <!--------------Wiz questions Page --------------------->
         <div id="wizQuestion"></div>
         <div id='editWizQuestion'></div>
         <script>$("#editWizQuestion").hide();</script>
         
-        <!-------------- Edit Questions page ----------------->
         <div id="editQuestions"></div>
         
-        <!--------------- New Questions ------------------>
         
         <div id="newQuestion">   
              
         </div>        
         
-        <!--------------- WISDOM OF THE GROUP ---------------->
-        
          
-        
-        <!------------- Chat ------------>
         <div id="chat"></div>
-    
        
         <script src="routing.js"></script>
         <script src="questionsBoard.js"></script>
@@ -98,20 +61,5 @@
         <script src="wizQuestions.js"></script>    
         <script src="chat.js"></script>
         <script src="signup.js"></script>
-
-<!--    
-        <a href="#" id="playButton">Play</a>
-        <div class="box" >
-          THISISBOX
-        </div>
-   
-    <script type="text/javascript">
-        document.getElementById('playButton').onclick = function (e) {
-            move('.box')
-          .x(300)
-          .end();
-        };
-    </script>
-    -->
     </body>
 </html>
