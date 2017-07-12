@@ -2,7 +2,15 @@
 
 var groupAddress = window.location.search;
 
+console.log(groupAddress)
 groupAddress = groupAddress.slice(1);
+var locationOfSlash = groupAddress.indexOf('/')
+if(locationOfSlash>0){
+  questionId = groupAddress.slice(locationOfSlash+1)
+  console.log(questionId)
+  groupAddress = groupAddress.slice(0,locationOfSlash)
+  console.log(groupAddress)
+}
 
 //in case ther is no specieal address set default adress/
 if (groupAddress == "") {
@@ -12,6 +20,7 @@ if (groupAddress == "") {
 
 var DB = new Firebase("https://votewiz.firebaseio.com");
 var sessionDB = DB.child("/sessions/"+groupAddress);
+startWizOptions(questionId)
 
 
 
