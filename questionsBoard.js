@@ -54,6 +54,9 @@ function setTypeOfQuestion(type){
             // push questions from DB
             
             sessionDB.child("questions").orderByChild("numberOfAnswers").on("value", function(questionsDB){
+
+
+
                 var questionsDivs = "";
                 questionsDB.forEach(function(questionDB){
                     
@@ -85,6 +88,9 @@ function setTypeOfQuestion(type){
             
             
             function showQuestions(){
+
+
+
                 $("#questionsList").show();    
                 $("#info").hide();
                 $("#infoBox").hide();
@@ -105,4 +111,3 @@ sessionDB.child("details").once("value", function(snapshot){
 });
 
 
-            

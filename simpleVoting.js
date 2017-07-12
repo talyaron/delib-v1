@@ -4,6 +4,10 @@
             //start simple question page:
 
             function voteQuestion(questionName) {
+
+              //change address to the question
+                window.location.hash = groupAddress+'/'+questionName
+
                 //load page
                 hideAllEcept("simplVoting");
                 
@@ -218,5 +222,10 @@ function listenToChangesInVotes (question, option, optionTitle){
 } 
 
 function setHideAllEcept() {
+
+  //set address
+  window.location.hash = groupAddress
+
+
   hideAllEcept("questionsList");
 }

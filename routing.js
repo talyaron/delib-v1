@@ -2,7 +2,7 @@ var DB = new Firebase("https://votewiz.firebaseio.com");
 
 //find the group adrress and start session in this group
 
-var groupAddress = window.location.search;
+var groupAddress = window.location.hash;
 
 console.log(groupAddress)
 groupAddress = groupAddress.slice(1);
@@ -15,9 +15,9 @@ if(locationOfSlash>0){
   isQuestion = true
 
   questionId = groupAddress.slice(locationOfSlash+1)
-  console.log(questionId)
+
   groupAddress = groupAddress.slice(0,locationOfSlash)
-  console.log(groupAddress)
+
 
   //check to see if it is a reg question or a wizquestion
 }
@@ -27,7 +27,9 @@ if (groupAddress == "") {
   groupAddress = "direct-democracy";
 }
 
-
+//window.history.pushState('page2', 'Title', 'http://www.google.com/page2.html');
+//window.location.href='http://google.com'
+;
 
 var sessionDB = DB.child("/sessions/"+groupAddress);
 
@@ -58,5 +60,5 @@ function newGroup(form){
   var sessionDB = DB.child("/sessions/"+groupUID);
   sessionDB.set({details:{name: groupName,owner: userName}});
 
-  window.open("index.html?"+groupUID, "_self");
+  window.open("index.html#"+groupUID, "_self");
 }
