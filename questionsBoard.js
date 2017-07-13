@@ -66,16 +66,16 @@ function setTypeOfQuestion(type){
                     
                     
                     if (typeOfQuestion === "wiz"){ //if question of wiz of the group
-                        questionsDivs += "<div class='questionsDivs wizQuestionsDivs'>"+
-                            "<span id='buttonTest' class='clickables' onclick='startWizOptions("+questionKey+")'>"+questionDB.val().header+"</span>"+
-                            "<img src='img/edit2.png' class='clickables editQuestionPen' height='25px' align='left' onclick='editQuestion("+questionKey+")'>"+
-                        "</div>"
+                        questionsDivs += "<div class='questionsDivs wizQuestionsDivs'><img src='img/ic_reorder_black_24dp_1x.png' width='20px' class='questionSymbole'>"+
+        "<span id='buttonTest' class='clickables' onclick='startWizOptions("+questionKey+")'>"+questionDB.val().header+"</span>"+
+        "<img src='img/edit2.png' class='clickables editQuestionPen' height='25px' align='left' onclick='editQuestion("+questionKey+")'>"+
+        "</div>"
                     } else {                       // for regular question
                     
-                        questionsDivs += "<div class='questionsDivs'>"+
-                        "<span id='buttonTest' class='clickables' onclick='voteQuestion("+questionKey+")'>"+questionDB.val().header+"</span>"+
-                        "<img src='img/edit2.png' class='clickables editQuestionPen' height='25px' align='left' onclick='editQuestion("+questionKey+")'>"+
-                        "</div>"
+                       questionsDivs += "<div class='questionsDivs'><img src='img/ic_assessment_black_24dp_1x.png' class='questionSymbole'>"+
+        "<span id='buttonTest' class='clickables' onclick='voteQuestion("+questionKey+")'>"+questionDB.val().header+"</span>"+
+        "<img src='img/edit2.png' class='clickables editQuestionPen' height='25px' align='left' onclick='editQuestion("+questionKey+")'>"+
+        "</div>"
                     }
                     
                     
