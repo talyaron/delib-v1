@@ -8,7 +8,7 @@
 var noVotesCh = 0;
 var yesVotesCh = 0;
 var optionsHtmlOld = new Array();
-
+var isMoveOptions = true;
 
 
 function startWizOptions (questionKey) {
@@ -62,6 +62,12 @@ function wizShowOptions(questionKey){
       var optionTitle = optionDB.val().text.title;
       var optionText = optionDB.val().text.mainText;
       var optionColor = optionDB.val().text.color;
+
+      //listen to changes in texts
+      listenToTextsChange(questionKey,optionKey);
+
+      //listen to changes in votes and move options; update text 
+      moveOptionsOnVoting(questionKey,optionKey);
 
 
       //Stringfing variable for the HTML of the option
@@ -141,7 +147,7 @@ function wizShowOptions(questionKey){
 
     //create html for header
     var htmlwizQuestion = "<img src='img/plusOption.png' id='wizPlus' class='clickables topButtons' onclick='crearteNewOptionTexbox(" + questionKeyStr + ")'>" +
-        "<img src='img/update.png' id='wizUpdate' class='clickables topButtons' onclick='wizShowOptions(" + questionKeyStr + ")'>" +
+        "<img src='img/pause.png' id='wizUpdate' class='clickables topButtons' onclick='pausePlay(" + questionKeyStr + ")'>" +
         "<img src='img/close.png' id='wizBack' class='clickables topButtons' onclick='closeWizQuestions(" + questionKeyStr + ")' id='okWizQuestion'>" +
         "<div class='wizHeader'>שאלה: " + headerText + "</div>";
 
@@ -159,7 +165,7 @@ function wizShowOptions(questionKey){
 
 
     //move options
-    console.log("show wiz options....")
+
     moveOptions(optionsHtml);
 
   })
@@ -247,9 +253,11 @@ function moveOptionsOnVoting (questionKey, optionKey) {
 
     optionsHtmlOld = optionsHtml;
 
-    //move to new position
+    //move to new position if global isMoveOptions is set to true 
 
-    moveOptions(optionsHtml);
+    if (isMoveOptions){
+      moveOptions(optionsHtml);
+    }
 
   })
 }
@@ -403,4 +411,17 @@ function closeWizQuestions(questionKey){
   sessionDB.child("questions/"+questionKey).off();
   sessionDB.child("questions/"+questionKey + "/options").off();
   hideAllEcept("questionsList");
+}
+
+function pausePlay(questionKey){
+  if (isMoveOptions){
+    $("#wizUpdate").attr("src","img/play.png");
+    isMoveOptions = false;
+    console.log("pause");
+  } else {
+    $("#wizUpdate").attr("src","img/pause.png");
+    isMoveOptions = true;
+    wizShowOptions(questionKey);
+
+  }
 }
