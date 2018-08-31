@@ -38,17 +38,12 @@ $("#loginForm").keypress(
     });
 
 
-$("#nameOfUser").keyup(function (event) {
-    if (event.keyCode == 13) {
-        anonymousAuthLogin();
-    }
-});
+
 
 
 
 //show signup screen
 function signup() {
-    console.log("signup");
 
     $("#signup").show();
     $("#loginForm").hide(400);
@@ -165,10 +160,17 @@ function getUserName() {
     })
 }
 
+function enterLogin(e, form) {
+    e.preventDefault();
+    if (e.keyCode == 13) {
+        anonymousAuthLogin(form)
+    }
 
+}
 
 
 function anonymousAuthLogin(form) {
+
 
     firebase.auth().signInAnonymously().catch(function (error) {
         // Handle Errors here.

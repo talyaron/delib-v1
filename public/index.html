@@ -9,6 +9,7 @@
     <script src="jquery-1.11.2.min.js"></script>
     <script src="commonFunctions.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
 
     <!-- Bootstrap switch -->
     <link href="boot-strap-switch/bootstrap.css" rel="stylesheet">
@@ -36,7 +37,8 @@
                         ביחד
                     </b></span><br><br>
                 <legend>התחברות</legend>
-                <input type="text" class="form-control" id="nameOfUser" name="name" size="8" placeholder="שם מלא" autofocus>
+                <input type="text" class="form-control" id="nameOfUser" name="name" size="8" placeholder="שם מלא" onkeyup="enterLogin(event, this.form)"
+                    autofocus>
                 <input type="button" id='loginButton' class="btn btn-primary" value="התחברות" onclick="anonymousAuthLogin(this.form)">
             </form>
             <div id="cc">פותח על ידי <a href="http://tal.yaron.com" target='_blank '>טל ירון</a><br> במסגרת <a href="http://delib-democracy.org"
