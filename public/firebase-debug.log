@@ -1,0 +1,21 @@
+[debug] [2018-08-31T08:47:30.801Z] ----------------------------------------------------------------------
+[debug] [2018-08-31T08:47:30.803Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Lenovo\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase init
+[debug] [2018-08-31T08:47:30.804Z] CLI Version:   3.19.0
+[debug] [2018-08-31T08:47:30.804Z] Platform:      win32
+[debug] [2018-08-31T08:47:30.804Z] Node Version:  v8.11.2
+[debug] [2018-08-31T08:47:30.804Z] Time:          Fri Aug 31 2018 11:47:30 GMT+0300 (שעון קיץ ירושלים)
+[debug] [2018-08-31T08:47:30.804Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-31T08:47:30.815Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2018-08-31T08:47:30.815Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Lenovo\Documents\delib\delib\delib-v1
+
