@@ -97,9 +97,9 @@ function wizShowOptions(questionKey) {
       var optionHtmlCurrent =
         "<div class='wizLayout' id='" + optionID + "' >" +
         "<div class='wizLeftPanel'>" +
-        "<div class='wizVoteUp wizButtons clickables' onclick='setWizVote(" + questionKeyStr + "," + optionKeyStr + "," + yesStr + ")'><img src='img/Yes.png' width='30px'>" +
+        "<div class='wizVoteUp wizButtons clickables' onclick='setWizVote(" + questionKeyStr + "," + optionKeyStr + "," + yesStr + ")'><img id='" + optionKey + "upImg' src='img/icons8-facebook-like-40-non.png' width='30px'>" +
         "</div>" +
-        "<div class='wizVoteDown wizButtons clickables' onclick='setWizVote(" + questionKeyStr + "," + optionKeyStr + "," + noStr + ")'><img src='img/no.png' height='30px'>" +
+        "<div class='wizVoteDown wizButtons clickables' onclick='setWizVote(" + questionKeyStr + "," + optionKeyStr + "," + noStr + ")'><img id='" + optionKey + "downImg' src='img/icons8-thumbs-down-40-non.png' height='30px'>" +
         "</div>" +
         "<div class='wizSuggest wizButtons clickables' onclick='setSuggestion()'><img src='img/suggestion.png' height='30px'>" +
         "</div>" +
@@ -275,6 +275,14 @@ function setWizVote(questionKey, optionKey, yesOrNot) {
   var votingDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes/");
 
   votingDB.child(userName).set(yesOrNot);
+  console.log(yesOrNot)
+  if (yesOrNot == 'yes') {
+    $('#' + optionKey + "upImg").attr('src', 'img/icons8-facebook-like-40.png');
+    $('#' + optionKey + "downImg").attr('src', 'img/icons8-thumbs-down-40-non.png')
+  } else if (yesOrNot == 'no') {
+    $('#' + optionKey + "upImg").attr('src', 'img/icons8-facebook-like-40-non.png');
+    $('#' + optionKey + "downImg").attr('src', 'img/icons8-thumbs-down-40.png')
+  }
 
 }
 

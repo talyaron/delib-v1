@@ -2,8 +2,6 @@
 //find the group adrress and start session in this group
 
 var groupAddress = window.location.hash;
-
-console.log('groupAddress:', groupAddress)
 groupAddress = groupAddress.slice(1);
 var locationOfSlash = groupAddress.indexOf('/')
 
@@ -26,15 +24,8 @@ if (groupAddress == "") {
   groupAddress = "tel-aviv";
 }
 
-//window.history.pushState('page2', 'Title', 'http://www.google.com/page2.html');
-//window.location.href='http://google.com'
-
-
 var sessionDB = DB.child("/sessions/" + groupAddress);
-console.log("/sessions/" + groupAddress)
-sessionDB.once('value').then(function (tt) {
-  console.dir(tt.val())
-})
+
 // if url direct to a question
 if (isQuestion) {
   //get type of question and and go to the question
@@ -50,9 +41,6 @@ if (isQuestion) {
   })
 
 }
-
-
-
 
 function newGroup(form) {
 

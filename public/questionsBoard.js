@@ -58,7 +58,7 @@ sessionDB.child("questions").orderByChild("numberOfAnswers")
 
         console.log(questionsDB.val())
 
-        var questionsDivs = "";
+        var questionsDivs = "<div class='orgName'>שם הארגון</div>";
         questionsDB.forEach(function (questionDB) {
 
             console.dir(questionDB.val())
@@ -69,7 +69,7 @@ sessionDB.child("questions").orderByChild("numberOfAnswers")
 
             if (typeOfQuestion === "wiz") { //if question of wiz of the group
                 questionsDivs += "<div class='questionsDivs wizQuestionsDivs'><img src='img/ic_reorder_black_24dp_1x.png' width='20px' class='questionSymbole'>" +
-                    "<span id='buttonTest' class='clickables' onclick='startWizOptions(" + questionKey + ")'>" + questionDB.val().header + "</span>" +
+                    "<span id='buttonTest' class='clickables questionTitle' onclick='startWizOptions(" + questionKey + ")'>" + questionDB.val().header + "</span>" +
                     "<img src='img/edit2.png' class='clickables editQuestionPen' height='25px' align='left' onclick='editQuestion(" + questionKey + ")'>" +
                     "</div>"
             } else {                       // for regular question
@@ -98,9 +98,11 @@ function showQuestions() {
 //if not group owner, hide edit icon
 //get group owner
 sessionDB.child("details").once("value", function (snapshot) {
-    console.log('get group owner')
+
     var groupOwner = snapshot.val().owner;
-    console.log("groupOwner: " + groupOwner + ", userName: " + userName);
+    var groupName = snapshot.val().name;
+    $('.orgName').text(groupName);
+
     if (groupOwner == userName || groupOwner == undefined) {
         $(".editQuestionPen").css("display", "inline");
         console.log("Show!");
