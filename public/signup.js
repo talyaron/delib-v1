@@ -154,8 +154,6 @@ function logout() {
     console.log("logout");
     firebase.auth().signOut();
     hideAllEcept('login')
-
-
 }
 
 

@@ -189,7 +189,7 @@ function moveOptions(optionsHtml) {
     var optionLocationStr = JSON.stringify(optionLocation) + "px";
 
     $("#" + optionsHtml[i][2]).animate({ top: optionLocationStr }, "slow");
-    console.log("option[" + i + "] " + optionsHtml[i][2] + " location is " + optionLocationStr + "with votes: " + optionsHtml[i][0]);
+
   }
 }
 
