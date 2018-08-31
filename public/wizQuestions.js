@@ -174,9 +174,9 @@ function wizShowOptions(questionKey) {
 //Start listen to changes in texts in DB and update options
 
 function listenToTextsChange(questionKey, optionKey) {
-  console.log("ID text had changed: " + optionKey);
+
   sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/text").on("value", function (textData) {
-    console.log("Texts - Attached!!!!!!!!!!");
+
     $("#" + questionKey + optionKey).html(textData.val().mainText);
     $("#" + questionKey + optionKey + "T").html(textData.val().title);
   })
@@ -228,6 +228,14 @@ function moveOptionsOnVoting(questionKey, optionKey) {
 
   sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").on("value", function (votes) {
 
+    //get votes by user and change appered votes accordingly
+
+    var userVote = votes.val()[userName];
+    if (userVote != undefined) {
+
+      setUserVoteVisual(optionKey, userVote)
+    }
+
     var votes = new Object();
     votes = countVotes(questionKey, optionKey);
     sumVotes = votes.yes - votes.no;
@@ -275,7 +283,12 @@ function setWizVote(questionKey, optionKey, yesOrNot) {
   var votingDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes/");
 
   votingDB.child(userName).set(yesOrNot);
-  console.log(yesOrNot)
+
+  setUserVoteVisual(optionKey, yesOrNot)
+
+}
+
+function setUserVoteVisual(optionKey, yesOrNot) {
   if (yesOrNot == 'yes') {
     $('#' + optionKey + "upImg").attr('src', 'img/icons8-facebook-like-40.png');
     $('#' + optionKey + "downImg").attr('src', 'img/icons8-thumbs-down-40-non.png')
@@ -283,7 +296,6 @@ function setWizVote(questionKey, optionKey, yesOrNot) {
     $('#' + optionKey + "upImg").attr('src', 'img/icons8-facebook-like-40-non.png');
     $('#' + optionKey + "downImg").attr('src', 'img/icons8-thumbs-down-40.png')
   }
-
 }
 
 // update text
@@ -311,7 +323,7 @@ function crearteNewOptionTexbox(questionKey) {
 
   var htmlText = "<div id='newOptionBoard'>אנא הציעו הצעה חדשה:<form class='form-group'><input name='title' class='form-control' type='text' placeholder='כותרת ההצעה' size='20'><textarea name='text' class='form-control' placeholder='הסבר על ההצעה' rows='4' cols='30'></textarea><input type='button' value='אישור' class='btn btn-success' onclick='createOption(" + questionKeyStr + ", this.form)'> <input type='button' class='btn btn-warning' value='ביטול' onclick='hideEditWizQuestion()'></form></div>";
 
-  $("#editWizQuestion").html(htmlText).show(500);
+  $("#editWizQuestion").html(htmlText).show(300);
 
 }
 
@@ -333,7 +345,7 @@ function createOption(questionKey, form) {
   });
 
   var optionKey = newOption.key;
-  console.log("New option key is: " + optionKey);
+
 
 
   $("#editWizQuestion").hide(500);
@@ -426,7 +438,7 @@ function pausePlay(questionKey) {
   if (isMoveOptions) {
     $("#wizUpdate").attr("src", "img/play.png");
     isMoveOptions = false;
-    console.log("pause");
+
   } else {
     $("#wizUpdate").attr("src", "img/pause.png");
     isMoveOptions = true;

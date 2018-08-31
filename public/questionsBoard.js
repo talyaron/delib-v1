@@ -56,12 +56,9 @@ function setTypeOfQuestion(type) {
 sessionDB.child("questions").orderByChild("numberOfAnswers")
     .on("value", function (questionsDB) {
 
-        console.log(questionsDB.val())
-
         var questionsDivs = "<div class='orgName'>שם הארגון</div>";
         questionsDB.forEach(function (questionDB) {
 
-            console.dir(questionDB.val())
             var numberOfAnswers = questionDB.val().numberOfAnswers;
             var typeOfQuestion = questionDB.val().type;
             var questionKey = JSON.stringify(questionDB.key);
@@ -75,7 +72,7 @@ sessionDB.child("questions").orderByChild("numberOfAnswers")
             } else {                       // for regular question
 
                 questionsDivs += "<div class='questionsDivs'><img src='img/ic_assessment_black_24dp_1x.png' class='questionSymbole'>" +
-                    "<span id='buttonTest' class='clickables' onclick='voteQuestion(" + questionKey + ")'>" + questionDB.val().header + "</span>" +
+                    "<span id='buttonTest' class='clickables questionTitle' onclick='voteQuestion(" + questionKey + ")'>" + questionDB.val().header + "</span>" +
                     "<img src='img/edit2.png' class='clickables editQuestionPen' height='25px' align='left' onclick='editQuestion(" + questionKey + ")'>" +
                     "</div>"
             }
@@ -105,10 +102,10 @@ sessionDB.child("details").once("value", function (snapshot) {
 
     if (groupOwner == userName || groupOwner == undefined) {
         $(".editQuestionPen").css("display", "inline");
-        console.log("Show!");
+
     } else {
         $(".editQuestionPen").css("display", "none");
-        console.log("Hide!");
+
     }
 });
 

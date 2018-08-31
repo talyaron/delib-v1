@@ -101,7 +101,7 @@ function setNewUser(form) {
 }
 
 function hideLoginScreen() {
-    console.log("hide");
+
     $("#signup").hide(400);
     $("#loginForm").show(400);
     $("#isFirstTime").hide();
