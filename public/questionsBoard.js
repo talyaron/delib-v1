@@ -100,12 +100,17 @@ function getGroupName() {
 
         var groupOwner = snapshot.val().owner;
         var groupName = snapshot.val().name;
-        $('.orgName').text(groupName);
 
-        if (groupOwner == userName || groupOwner == undefined) {
-            $(".editQuestionPen").css("display", "inline");
+        //wrrite group name on board
+        $('.orgName').text(groupName);
+        console.log('getGroupName', groupOwner, store.user.uid)
+        //show editin options if the user is the owner
+        if (groupOwner == store.user.uid || groupOwner == undefined) {
+            console.log('enable editing');
+            $(".editQuestionPen").css("display", "block");
 
         } else {
+            console.log('disable editing');
             $(".editQuestionPen").css("display", "none");
 
         }

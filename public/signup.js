@@ -206,7 +206,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         store.user.uid = user.uid;
         store.user.isAnonymous = isAnonymous;
         getUserName(uid);
-
         auth = user;
         auth.uid = uid;
         auth.image = "img/avatar-male.png";

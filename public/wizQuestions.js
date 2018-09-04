@@ -241,12 +241,7 @@ function moveOptionsOnVoting(questionKey, optionKey) {
     .child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes/sumVotes")
     .on("value", function (votesDB) {
 
-
       sumVotes = votesDB.val();
-      console.log('sumVotes', sumVotes)
-
-      //$("#" + questionKey + optionKey + "votes")
-      //    .text("בעד: " + yesVotes + ", נגד: " + noVotes + ", סך הכל: " + sumVotes);
 
       var optionsHtml = new Array();
       optionsHtml = optionsHtmlOld;
