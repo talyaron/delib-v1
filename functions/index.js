@@ -13,18 +13,21 @@ exports.updateVotes = functions.database
         var sumVotes = 0;
 
         var usersVotes = change.after;
+        var yesVotes = 0, noVotes = 0;
 
         usersVotes.forEach(userVote => {
             if (userVote.val() === 'yes') {
                 sumVotes++;
+                yesVotes++;
             } else if (userVote.val() === 'no') {
                 sumVotes--;
+                noVotes++;
             }
 
         })
 
         return admin.database()
-            .ref('sessions/' + sessionId + '/questions/' + questionId + '/options/' + optionId)
-            .update({ sumVotes: sumVotes })
+            .ref('sessions/' + sessionId + '/questions/' + questionId + '/options/' + optionId + '/sumVotes')
+            .update({ sumVotes: sumVotes, yesVotes: yesVotes, noVotes: noVotes })
 
     })

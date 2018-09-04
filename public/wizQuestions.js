@@ -58,6 +58,8 @@ function wizShowOptions(questionKey) {
     //get information for all options under the question and create aray with the options
     optionsDB.forEach(function (optionDB) {
 
+
+
       var optionKey = optionDB.key;
       var optionTitle = optionDB.val().text.title;
       var optionText = optionDB.val().text.mainText;
@@ -68,6 +70,8 @@ function wizShowOptions(questionKey) {
 
       //listen to changes in votes and move options; update text 
       moveOptionsOnVoting(questionKey, optionKey);
+      //liste to changes in votes and update texts
+      countVotesContinusely(questionKey, optionKey);
 
 
       //Stringfing variable for the HTML of the option
@@ -196,31 +200,39 @@ function moveOptions(optionsHtml) {
 //count votes
 function countVotes(questionKey, optionKey) {
 
-  var votesDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes");
+  var votesDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes");
+  votesDB.once("value", function (sumVotesDB) {
 
-  votesDB.once("value", function (voters) {
+    noVotesCh = sumVotesDB.val().noVotes;
+    yesVotesCh = sumVotesDB.val().yesVotes;
+    sumVotes = sumVotesDB.val().sumVotes;
 
-    noVotesCh = 0;
-    yesVotesCh = 0;
-
-    voters.forEach(function (vote) {
-      if (vote.val() === "no") {
-        noVotesCh++;
-      }
-      if (vote.val() === "yes") {
-        yesVotesCh++;
-      }
-    })
-    $("#" + questionKey + optionKey + "votes")
-      .text("בעד: " + yesVotesCh + ", נגד: " + noVotesCh + ", תוצאה: " + (yesVotesCh - noVotesCh));
-
-
-    //     moveOptions(optionsHtmlOld, questionKey);
 
   });
 
   return { yes: yesVotesCh, no: noVotesCh };
 }
+
+//count votes and update texts
+function countVotesContinusely(questionKey, optionKey) {
+
+  var votesDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes");
+  votesDB.on("value", function (sumVotesDB) {
+
+    noVotesCh = sumVotesDB.val().noVotes;
+    yesVotesCh = sumVotesDB.val().yesVotes;
+    sumVotes = sumVotesDB.val().sumVotes;
+
+    $("#" + questionKey + optionKey + "votes")
+      .text("בעד: " + yesVotesCh + ", נגד: " + noVotesCh + ", תוצאה: " + sumVotes);
+
+
+  });
+
+
+}
+
+
 
 
 
@@ -342,7 +354,11 @@ function createOption(questionKey, form) {
       title: title,
       color: getRandomColor()
     },
-    sumVotes: 0
+    sumVotes: {
+      sumVotes: 0,
+      yesVotes: 0,
+      noVotes: 0
+    }
   });
 
   var optionKey = newOption.key;
@@ -427,11 +443,27 @@ function hideEditWizQuestion() {
 
 function closeWizQuestions(questionKey) {
 
+
+
+
   //change address to the question
   window.location.hash = groupAddress
 
+  //close listening;
   sessionDB.child("questions/" + questionKey).off();
   sessionDB.child("questions/" + questionKey + "/options").off();
+  sessionDB.child("questions/" + questionKey + "/options").off("child_added");
+  sessionDB.child("questions/" + questionKey + "/options").off("child_removed");
+  sessionDB.child("questions/" + questionKey + "/options").once('value').then(optionsDB => {
+    optionsDB.forEach(optionDB => {
+      optionKey = optionDB.key;
+      sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/text").off("value");
+      sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").off("value");
+      sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes").off("value");
+    })
+  })
+
+
   hideAllEcept("questionsList");
 }
 
