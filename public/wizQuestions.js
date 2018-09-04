@@ -49,7 +49,7 @@ function wizShowOptions(questionKey) {
   var questionKeyStr = JSON.stringify(questionKey);
 
 
-
+  //get information for all options under the question
   sessionDB.child("questions/" + questionKey + "/options").once("value", function (optionsDB) {
 
     //array for all the options
@@ -341,7 +341,8 @@ function createOption(questionKey, form) {
       mainText: text,
       title: title,
       color: getRandomColor()
-    }
+    },
+    sumVotes: 0
   });
 
   var optionKey = newOption.key;
