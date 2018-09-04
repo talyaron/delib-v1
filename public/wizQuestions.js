@@ -34,7 +34,7 @@ function startWizOptions(questionKey) {
       listenToTextsChange(questionKey, optionKey);
 
       //listen to changes in votes and move options; update text
-      moveOptionsOnVoting(questionKey, optionKey);
+      // moveOptionsOnVoting(questionKey, optionKey);
     })
   })
 
@@ -229,7 +229,6 @@ function countVotesContinusely(questionKey, optionKey) {
 
   });
 
-
 }
 
 
@@ -238,48 +237,42 @@ function countVotesContinusely(questionKey, optionKey) {
 
 function moveOptionsOnVoting(questionKey, optionKey) {
 
-  sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").on("value", function (votes) {
+  sessionDB
+    .child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes/sumVotes")
+    .on("value", function (votesDB) {
 
-    //get votes by user and change appered votes accordingly
 
-    var userVote = votes.val()[userName];
-    if (userVote != undefined) {
+      sumVotes = votesDB.val();
+      console.log('sumVotes', sumVotes)
 
-      setUserVoteVisual(optionKey, userVote)
-    }
+      //$("#" + questionKey + optionKey + "votes")
+      //    .text("בעד: " + yesVotes + ", נגד: " + noVotes + ", סך הכל: " + sumVotes);
 
-    var votes = new Object();
-    votes = countVotes(questionKey, optionKey);
-    sumVotes = votes.yes - votes.no;
+      var optionsHtml = new Array();
+      optionsHtml = optionsHtmlOld;
 
-    //$("#" + questionKey + optionKey + "votes")
-    //    .text("בעד: " + yesVotes + ", נגד: " + noVotes + ", סך הכל: " + sumVotes);
+      //find options in array and add vote count to the option
+      var optionLocation;
+      for (i in optionsHtml) {
+        if (optionsHtml[i][2] == questionKey + "_" + optionKey + "_div") {
+          optionsHtml[i][0] = sumVotes;
+          break;
+        };
 
-    var optionsHtml = new Array();
-    optionsHtml = optionsHtmlOld;
+      }
 
-    //find options in array and add vote count to the option
-    var optionLocation;
-    for (i in optionsHtml) {
-      if (optionsHtml[i][2] == questionKey + "_" + optionKey + "_div") {
-        optionsHtml[i][0] = sumVotes;
-        break;
-      };
+      //order in a new order
+      orderOptions(optionsHtml)
 
-    }
+      optionsHtmlOld = optionsHtml;
 
-    //order in a new order
-    orderOptions(optionsHtml)
+      //move to new position if global isMoveOptions is set to true 
 
-    optionsHtmlOld = optionsHtml;
+      if (isMoveOptions) {
+        moveOptions(optionsHtml);
+      }
 
-    //move to new position if global isMoveOptions is set to true 
-
-    if (isMoveOptions) {
-      moveOptions(optionsHtml);
-    }
-
-  })
+    })
 }
 
 function orderOptions(optionsHtml) {
@@ -294,7 +287,7 @@ function setWizVote(questionKey, optionKey, yesOrNot) {
   //Set new vote to an option
   var votingDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes/");
 
-  votingDB.child(userName).set(yesOrNot);
+  votingDB.child(store.user.uid).set(yesOrNot);
 
   setUserVoteVisual(optionKey, yesOrNot)
 
@@ -372,7 +365,7 @@ function createOption(questionKey, form) {
   listenToTextsChange(questionKey, optionKey);
 
   //listen to changes in votes and move options; update text
-  moveOptionsOnVoting(questionKey, optionKey);
+
 }
 
 // delete option
@@ -442,10 +435,6 @@ function hideEditWizQuestion() {
 }
 
 function closeWizQuestions(questionKey) {
-
-
-
-
   //change address to the question
   window.location.hash = groupAddress
 
@@ -460,6 +449,7 @@ function closeWizQuestions(questionKey) {
       sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/text").off("value");
       sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").off("value");
       sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes").off("value");
+      sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes/sumVotes").off()
     })
   })
 

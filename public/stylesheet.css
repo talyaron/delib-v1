@@ -347,6 +347,7 @@ header {
 
 .clickables {
     cursor: pointer;
+    user-select: none;
 }
 
 #questionsList {
