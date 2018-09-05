@@ -16,10 +16,7 @@ function startWizOptions(questionKey) {
   window.location.hash = groupAddress + '/' + questionKey
 
   //when an option is added, redraw options
-  sessionDB.child("questions/" + questionKey + "/options").on("child_added", function (snapshot) {
-    console.log('child added')
-    wizShowOptions(questionKey);
-  })
+  listenToNewOptions('on', questionKey);
 
   //when an option is deleted, redraw options
   sessionDB.child("questions/" + questionKey + "/options").on("child_removed", function (snapshot) {
@@ -469,15 +466,27 @@ function pausePlay(questionKey) {
   if (isMoveOptions) {
     $("#wizUpdate").attr("src", "img/play.png");
     isMoveOptions = false;
+    listenToNewOptions('off', questionKey);
 
   } else {
     $("#wizUpdate").attr("src", "img/pause.png");
     isMoveOptions = true;
-    wizShowOptions(questionKey);
+    listenToNewOptions('on', questionKey);
+    // wizShowOptions(questionKey);
 
   }
 }
 
+function listenToNewOptions(onOff, questionKey) {
+  if (onOff === 'on') {
+    sessionDB.child("questions/" + questionKey + "/options").on("child_added", function (snapshot) {
+      console.log('child added')
+      wizShowOptions(questionKey);
+    })
+  } else {
+    sessionDB.child("questions/" + questionKey + "/options").off("child_added")
+  }
+}
 // var xt = {}
 // function listenToChatOfOption(questionKey, optionKey) {
 //   console.log('listenToChatOfOption');
