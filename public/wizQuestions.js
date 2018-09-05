@@ -17,6 +17,7 @@ function startWizOptions(questionKey) {
 
   //when an option is added, redraw options
   sessionDB.child("questions/" + questionKey + "/options").on("child_added", function (snapshot) {
+    console.log('child added')
     wizShowOptions(questionKey);
   })
 
@@ -317,6 +318,14 @@ function updateText(questionKey, optionKey) {
   $("#editWizQuestion").hide(500);
 }
 
+function cancelEdit(questionKey, optionKey) {
+  var textID = questionKey + optionKey;
+  var titleInput = $("#" + textID + "TEdit").html();
+  //wizShowOptions(questionKey);
+  $("#editWizQuestion").hide(500);
+
+}
+
 
 //create new option edit box
 
@@ -409,7 +418,8 @@ function editWizOption(questionKey, optionKey) {
       textOption +
       "</div>" +
       "</div>" +
-      " <input type='button' class='pure-button pure-button-primary' value='OK' onclick='updateText(" + questionKeyStr + "," + optionKeyStr + ")'> " +
+      " <input type='button' class='pure-button pure-button-primary' value='אישור' onclick='updateText(" + questionKeyStr + "," + optionKeyStr + ")'> " +
+      " <input type='button' class='pure-button pure-button-primary button-warning' value='ביטול' onclick='cancelEdit(" + questionKeyStr + "," + optionKeyStr + ")'> " +
       "<input type='button' class='button-align-right pure-button button-error' value='מחיקה'" +
       " onclick='deleteWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> " +
       "</div></div>";
