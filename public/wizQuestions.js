@@ -108,7 +108,7 @@ function wizShowOptions(questionKey) {
         "</div>" +
         "<div class='wizSuggest wizButtons clickables' onclick='setSuggestion()'><img src='img/suggestion.png' height='30px'>" +
         "</div>" +
-        "<div class='wizTalk wizButtons clickables' onclick='startWizTalk(" + questionKeyStr + "," + optionKeyStr + ", " + optionTitleStr + ")'><img src='img/talk.png' height='30px'>" +
+        "<div class='wizTalk wizButtons clickables' onclick='startWizTalk(" + questionKeyStr + "," + optionKeyStr + ", " + optionTitleStr + ")'><img src='img/talk.png' height='30px'><div id='" + optionKey + "count' ></div>" +
         "</div>" +
         "</div>" +
         "<div class='wizMainWrapText' style='background-color:" + colorStr + "'>" +
@@ -129,7 +129,7 @@ function wizShowOptions(questionKey) {
       var sumVotes = yesVotes - noVotes;
 
       optionsHtml.push([sumVotes, optionHtmlCurrent, optionID, -1]); //[score, HTML, ID, location]
-
+      countChats('on', questionKey, optionKey);
     })
 
     //sort by votes
@@ -172,6 +172,7 @@ function wizShowOptions(questionKey) {
     //move options
 
     moveOptions(optionsHtml);
+
 
   })
 }
@@ -443,6 +444,8 @@ function closeWizQuestions(questionKey) {
   //change address to the question
   window.location.hash = groupAddress
 
+
+
   //close listening;
   sessionDB.child("questions/" + questionKey).off();
   sessionDB.child("questions/" + questionKey + "/options").off();
@@ -451,6 +454,7 @@ function closeWizQuestions(questionKey) {
   sessionDB.child("questions/" + questionKey + "/options").once('value').then(optionsDB => {
     optionsDB.forEach(optionDB => {
       optionKey = optionDB.key;
+      countChats('off', questionKey, optionKey);
       sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/text").off("value");
       sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").off("value");
       sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes").off("value");
@@ -480,7 +484,7 @@ function pausePlay(questionKey) {
 function listenToNewOptions(onOff, questionKey) {
   if (onOff === 'on') {
     sessionDB.child("questions/" + questionKey + "/options").on("child_added", function (snapshot) {
-      console.log('child added')
+
       wizShowOptions(questionKey);
     })
   } else {
