@@ -31,7 +31,6 @@ function sendChatInput(question, option, form, userName) {
     //var timeOfInput = new Date();
     //timeOfInput = parseDateToDB(timeOfInput);
     var timeOfInput = firebase.database.ServerValue.TIMESTAMP;
-    console.log(timeOfInput);
 
     chatInputDB.push({ name: userName, text: text, time: timeOfInput });
 
@@ -72,7 +71,7 @@ function getChatHistory(onOff, question, option) {
 
 function closeChat(question, option) {
     getChatHistory('off', question, option);
-    countChats('off', question, option)
+
     hideAllEcept("wizQuestion");
 
 
@@ -89,6 +88,7 @@ function countChats(onOff, questionId, optionId) {
             if (messagesCountDB.val()) {
                 messagesSinceLastVisit = currentVisit - lastVisit;
             }
+            if (messagesSinceLastVisit > 99) { messagesSinceLastVisit = "99+" }
             $("#" + optionId + "count").text(messagesSinceLastVisit)
         })
     } else {
@@ -96,9 +96,9 @@ function countChats(onOff, questionId, optionId) {
         messagesCountRef.off('value');
 
         messagesCountRef.once('value', messagesCountDB => {
-            console.log('close chat', optionId)
+
             _.set(store.user, 'chats[' + questionId + '][' + optionId + '].lastChatCount', messagesCountDB.val() || 0);
-            console.log(store.user)
+
         })
 
     }
