@@ -16,7 +16,7 @@ function startWizOptions(questionKey) {
   window.location.hash = groupAddress + '/' + questionKey
 
   //when an option is added, redraw options
-  sessionDB.child("questions/" + questionKey + "/options").limitToLast(1).on("child_added", function (snapshot) {
+  sessionDB.child("questions/" + questionKey + "/options").on("child_added", function (snapshot) {
     wizShowOptions(questionKey);
   })
 
@@ -72,6 +72,9 @@ function wizShowOptions(questionKey) {
       moveOptionsOnVoting(questionKey, optionKey);
       //liste to changes in votes and update texts
       countVotesContinusely(questionKey, optionKey);
+
+      //listen to chats counter
+      // listenToChatOfOption(questionKey, optionKey);
 
 
       //Stringfing variable for the HTML of the option
@@ -464,3 +467,17 @@ function pausePlay(questionKey) {
 
   }
 }
+
+// var xt = {}
+// function listenToChatOfOption(questionKey, optionKey) {
+//   console.log('listenToChatOfOption');
+//   sessionDB.child('questionsChat/' + questionKey + '/options/' + optionKey + '/chat')
+//     .orderByChild('time').limitToLast(4).startAt(userLastEnter).on('child_added', chatMessageDB => {
+//       console.log('child added')
+//       if (!xt.hasOwnProperty(optionKey)) {
+//         xt[optionKey] = {}
+//       }
+//       xt[optionKey][chatMessageDB.val().time] = true
+//       console.log(questionKey, optionKey, xt)
+//     })
+// }

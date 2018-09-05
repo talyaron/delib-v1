@@ -3,31 +3,6 @@
 var auth = new Object();
 
 
-//check if logged or signout
-// function loginLogout(authData) {
-//     if (authData) {
-//         console.log("logedin");
-//         getUserName();
-
-//         var userNameWindow = localStorage.getItem("userName");
-
-//         if (userName == "" && userNameWindow != null) {
-//             //try to get it form window
-//             userName = userNameWindow;
-//             console.log("got user name from window:" + userName)
-//         }
-
-//         $("#login").hide();
-//         $("header").html("שלום " + userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
-//         showQuestions();
-//     } else {
-//         console.log("logedout");
-//         $("header").html("");
-//         $("#login").show(400);
-//         hideAllEcept("login");
-//     }
-// }
-
 
 $("#loginForm").keypress(
     function (event) {
@@ -36,11 +11,6 @@ $("#loginForm").keypress(
 
         }
     });
-
-
-
-
-
 
 //show signup screen
 function signup() {
@@ -102,49 +72,6 @@ function hideLoginScreen() {
     $("#isFirstTime").hide();
 }
 
-/*
-function setName(form){
-                var email = form.email.value;
-                var pass = form.pass.value;
-                
-                $("#loginWait").text("רק רגע...");
-                                
-                DB.authWithPassword({
-                  email    : email,
-                  password : pass
-                }, function(error, authData) {
-                  if (error) {
-                    console.log("Login Failed!", error);
-                    
-                    $("#loginMessage2").css("background-color","red");
-                
-                
-                    switch (error.code) {
-                      case "INVALID_PASSWORD":
-                        $("#loginMessage2").text('סיסמא לא נכונה');
-                        break;                  
-                      case "INVALID_USER":
-                         $("#loginMessage2").text('אין משתמש כזה');
-                        break;
-                      default:
-                        $("#loginMessage2").text('הנתונים אינם תקינים');
-                    }
-                      
-                  } else {
-                    console.log("Authenticated successfully with payload:", authData);
-                    
-                    //find user name by uid
-                      console.log("uid: "+authData.uid);
-                    
-                    getUserName();  
-                      
-                    //$("header").text("שלום "+email);
-                    showQuestions(); //show question page
-                    $("#login").hide(100);
-                  }
-                });
-            }
-*/
 function logout() {
     console.log("logout");
     firebase.auth().signOut();
@@ -154,7 +81,7 @@ function logout() {
 
 function getUserName(userUID) {
     DB.child("users/" + userUID).once("value", function (userData) {
-        console.log("found uid: " + userData.val().name);
+
         userName = userData.val().name;
         $("header").html("שלום " + userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
     })
@@ -224,13 +151,13 @@ firebase.auth().onAuthStateChanged(function (user) {
 //get group owner
 sessionDB.child("details").once("value", function (snapshot) {
     var groupOwner = snapshot.val().owner;
-    console.log("groupOwner: " + groupOwner + ", userName: " + userName);
+
     if (groupOwner == userName || groupOwner == undefined) {
         $(".editQuestionPen").css("display", "inline");
-        console.log("Show!");
+
     } else {
         $(".editQuestionPen").css("display", "none");
-        console.log("Hide!");
+
     }
 })
 
