@@ -50,8 +50,6 @@ function voteQuestion(questionName) {
 
                 if (optionTitle == "") { optionTitle = "אפשרות " + indexOfOptions }
 
-                console.log("infoTit: " + optionTitle);
-
                 optionsArray.push([optionTitle, optionBody, option.key]);
             }
             indexOfOptions++;
@@ -59,7 +57,7 @@ function voteQuestion(questionName) {
         })
 
         var numberOfOptions = optionsArray.length
-        console.log("number of options: " + numberOfOptions);
+
         //show options 
         var voteDivHTML = '<div id="votePanel">' +
             '<div class="wizHeader"><span>שאלה: ' + questionHeader + '</span>' +
@@ -115,7 +113,7 @@ function voteQuestion(questionName) {
         var voteButtonsHeightTemp = 0;
         for (i in optionsArray) {
             voteButtonsHeightTemp = $("#" + optionsArray[i][2] + "voteBtn").height();
-            console.log("Height: " + voteButtonsHeightTemp)
+
             if (voteButtonsHeightTemp > voteButtonsHeight) {
                 voteButtonsHeight = voteButtonsHeightTemp;
             }
@@ -125,11 +123,6 @@ function voteQuestion(questionName) {
 
 
         $(".voteButtons").height(voteButtonsHeight);
-
-        console.log("Height max: " + "#" + optionsArray[i][2] + "voteBtn: " + voteButtonsHeight);
-
-
-
 
     });
 
@@ -161,7 +154,7 @@ function voteAssign(question, optionID) {
     sessionDB.child("questions/" + question + "/options/").once("value", function (options) {
         options.forEach(function (option) {
 
-            console.log("option: " + option.key);
+
             if (userName != "") {
                 if (optionID == option.key) {
                     sessionDB.child("questions/" + question + "/options/" + option.key + "/votes/" + userName).set("yes");
@@ -196,7 +189,7 @@ function ShowHideExplan() {
 }
 
 function setTypeOfQuestion(questionKey, type) {
-    console.log("type set: " + type);
+
     sessionDB.child("questions/" + questionKey + "/type").set(type);
 }
 

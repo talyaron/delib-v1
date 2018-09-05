@@ -16,7 +16,7 @@ function startWizOptions(questionKey) {
   window.location.hash = groupAddress + '/' + questionKey
 
   //when an option is added, redraw options
-  sessionDB.child("questions/" + questionKey + "/options").limitToLast(1).on("child_added", function (snapshot) {
+  sessionDB.child("questions/" + questionKey + "/options").on("child_added", function (snapshot) {
     wizShowOptions(questionKey);
   })
 
@@ -34,7 +34,7 @@ function startWizOptions(questionKey) {
       listenToTextsChange(questionKey, optionKey);
 
       //listen to changes in votes and move options; update text
-      moveOptionsOnVoting(questionKey, optionKey);
+      // moveOptionsOnVoting(questionKey, optionKey);
     })
   })
 
@@ -58,6 +58,8 @@ function wizShowOptions(questionKey) {
     //get information for all options under the question and create aray with the options
     optionsDB.forEach(function (optionDB) {
 
+
+
       var optionKey = optionDB.key;
       var optionTitle = optionDB.val().text.title;
       var optionText = optionDB.val().text.mainText;
@@ -68,6 +70,11 @@ function wizShowOptions(questionKey) {
 
       //listen to changes in votes and move options; update text 
       moveOptionsOnVoting(questionKey, optionKey);
+      //liste to changes in votes and update texts
+      countVotesContinusely(questionKey, optionKey);
+
+      //listen to chats counter
+      // listenToChatOfOption(questionKey, optionKey);
 
 
       //Stringfing variable for the HTML of the option
@@ -196,78 +203,74 @@ function moveOptions(optionsHtml) {
 //count votes
 function countVotes(questionKey, optionKey) {
 
-  var votesDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes");
+  var votesDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes");
+  votesDB.once("value", function (sumVotesDB) {
 
-  votesDB.once("value", function (voters) {
+    noVotesCh = sumVotesDB.val().noVotes;
+    yesVotesCh = sumVotesDB.val().yesVotes;
+    sumVotes = sumVotesDB.val().sumVotes;
 
-    noVotesCh = 0;
-    yesVotesCh = 0;
-
-    voters.forEach(function (vote) {
-      if (vote.val() === "no") {
-        noVotesCh++;
-      }
-      if (vote.val() === "yes") {
-        yesVotesCh++;
-      }
-    })
-    $("#" + questionKey + optionKey + "votes")
-      .text("בעד: " + yesVotesCh + ", נגד: " + noVotesCh + ", תוצאה: " + (yesVotesCh - noVotesCh));
-
-
-    //     moveOptions(optionsHtmlOld, questionKey);
 
   });
 
   return { yes: yesVotesCh, no: noVotesCh };
 }
 
+//count votes and update texts
+function countVotesContinusely(questionKey, optionKey) {
+
+  var votesDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes");
+  votesDB.on("value", function (sumVotesDB) {
+
+    noVotesCh = sumVotesDB.val().noVotes;
+    yesVotesCh = sumVotesDB.val().yesVotes;
+    sumVotes = sumVotesDB.val().sumVotes;
+
+    $("#" + questionKey + optionKey + "votes")
+      .text("בעד: " + yesVotesCh + ", נגד: " + noVotesCh + ", תוצאה: " + sumVotes);
+
+
+  });
+
+}
+
+
+
 
 
 function moveOptionsOnVoting(questionKey, optionKey) {
 
-  sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").on("value", function (votes) {
+  sessionDB
+    .child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes/sumVotes")
+    .on("value", function (votesDB) {
 
-    //get votes by user and change appered votes accordingly
+      sumVotes = votesDB.val();
 
-    var userVote = votes.val()[userName];
-    if (userVote != undefined) {
+      var optionsHtml = new Array();
+      optionsHtml = optionsHtmlOld;
 
-      setUserVoteVisual(optionKey, userVote)
-    }
+      //find options in array and add vote count to the option
+      var optionLocation;
+      for (i in optionsHtml) {
+        if (optionsHtml[i][2] == questionKey + "_" + optionKey + "_div") {
+          optionsHtml[i][0] = sumVotes;
+          break;
+        };
 
-    var votes = new Object();
-    votes = countVotes(questionKey, optionKey);
-    sumVotes = votes.yes - votes.no;
+      }
 
-    //$("#" + questionKey + optionKey + "votes")
-    //    .text("בעד: " + yesVotes + ", נגד: " + noVotes + ", סך הכל: " + sumVotes);
+      //order in a new order
+      orderOptions(optionsHtml)
 
-    var optionsHtml = new Array();
-    optionsHtml = optionsHtmlOld;
+      optionsHtmlOld = optionsHtml;
 
-    //find options in array and add vote count to the option
-    var optionLocation;
-    for (i in optionsHtml) {
-      if (optionsHtml[i][2] == questionKey + "_" + optionKey + "_div") {
-        optionsHtml[i][0] = sumVotes;
-        break;
-      };
+      //move to new position if global isMoveOptions is set to true 
 
-    }
+      if (isMoveOptions) {
+        moveOptions(optionsHtml);
+      }
 
-    //order in a new order
-    orderOptions(optionsHtml)
-
-    optionsHtmlOld = optionsHtml;
-
-    //move to new position if global isMoveOptions is set to true 
-
-    if (isMoveOptions) {
-      moveOptions(optionsHtml);
-    }
-
-  })
+    })
 }
 
 function orderOptions(optionsHtml) {
@@ -282,7 +285,7 @@ function setWizVote(questionKey, optionKey, yesOrNot) {
   //Set new vote to an option
   var votingDB = sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes/");
 
-  votingDB.child(userName).set(yesOrNot);
+  votingDB.child(store.user.uid).set(yesOrNot);
 
   setUserVoteVisual(optionKey, yesOrNot)
 
@@ -342,7 +345,11 @@ function createOption(questionKey, form) {
       title: title,
       color: getRandomColor()
     },
-    sumVotes: 0
+    sumVotes: {
+      sumVotes: 0,
+      yesVotes: 0,
+      noVotes: 0
+    }
   });
 
   var optionKey = newOption.key;
@@ -356,7 +363,7 @@ function createOption(questionKey, form) {
   listenToTextsChange(questionKey, optionKey);
 
   //listen to changes in votes and move options; update text
-  moveOptionsOnVoting(questionKey, optionKey);
+
 }
 
 // delete option
@@ -426,12 +433,25 @@ function hideEditWizQuestion() {
 }
 
 function closeWizQuestions(questionKey) {
-
   //change address to the question
   window.location.hash = groupAddress
 
+  //close listening;
   sessionDB.child("questions/" + questionKey).off();
   sessionDB.child("questions/" + questionKey + "/options").off();
+  sessionDB.child("questions/" + questionKey + "/options").off("child_added");
+  sessionDB.child("questions/" + questionKey + "/options").off("child_removed");
+  sessionDB.child("questions/" + questionKey + "/options").once('value').then(optionsDB => {
+    optionsDB.forEach(optionDB => {
+      optionKey = optionDB.key;
+      sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/text").off("value");
+      sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").off("value");
+      sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes").off("value");
+      sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes/sumVotes").off()
+    })
+  })
+
+
   hideAllEcept("questionsList");
 }
 
@@ -447,3 +467,17 @@ function pausePlay(questionKey) {
 
   }
 }
+
+// var xt = {}
+// function listenToChatOfOption(questionKey, optionKey) {
+//   console.log('listenToChatOfOption');
+//   sessionDB.child('questionsChat/' + questionKey + '/options/' + optionKey + '/chat')
+//     .orderByChild('time').limitToLast(4).startAt(userLastEnter).on('child_added', chatMessageDB => {
+//       console.log('child added')
+//       if (!xt.hasOwnProperty(optionKey)) {
+//         xt[optionKey] = {}
+//       }
+//       xt[optionKey][chatMessageDB.val().time] = true
+//       console.log(questionKey, optionKey, xt)
+//     })
+// }

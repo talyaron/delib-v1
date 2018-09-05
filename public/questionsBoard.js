@@ -87,6 +87,7 @@ sessionDB.child("questions").orderByChild("numberOfAnswers")
 
 
 function showQuestions() {
+    getGroupName();
     $("#questionsList").show();
     $("#info").hide();
     $("#infoBox").hide();
@@ -94,19 +95,26 @@ function showQuestions() {
 
 //if not group owner, hide edit icon
 //get group owner
-sessionDB.child("details").once("value", function (snapshot) {
+function getGroupName() {
+    sessionDB.child("details").once("value", function (snapshot) {
 
-    var groupOwner = snapshot.val().owner;
-    var groupName = snapshot.val().name;
-    $('.orgName').text(groupName);
+        var groupOwner = snapshot.val().owner;
+        var groupName = snapshot.val().name;
 
-    if (groupOwner == userName || groupOwner == undefined) {
-        $(".editQuestionPen").css("display", "inline");
+        //wrrite group name on board
+        $('.orgName').text(groupName);
+        console.log('getGroupName', groupOwner, store.user.uid)
+        //show editin options if the user is the owner
+        if (groupOwner == store.user.uid || groupOwner == undefined) {
+            console.log('enable editing');
+            $(".editQuestionPen").css("display", "block");
 
-    } else {
-        $(".editQuestionPen").css("display", "none");
+        } else {
+            console.log('disable editing');
+            $(".editQuestionPen").css("display", "none");
 
-    }
-});
+        }
+    });
+}
 
 

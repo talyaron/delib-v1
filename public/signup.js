@@ -3,31 +3,6 @@
 var auth = new Object();
 
 
-//check if logged or signout
-function loginLogout(authData) {
-    if (authData) {
-        console.log("logedin");
-        // getUserName();
-
-        var userNameWindow = localStorage.getItem("userName");
-
-        if (userName == "" && userNameWindow != null) {
-            //try to get it form window
-            userName = userNameWindow;
-            console.log("got user name from window:" + userName)
-        }
-
-        $("#login").hide();
-        $("header").html("שלום " + userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
-        showQuestions();
-    } else {
-        console.log("logedout");
-        $("header").html("");
-        $("#login").show(400);
-        hideAllEcept("login");
-    }
-}
-
 
 $("#loginForm").keypress(
     function (event) {
@@ -36,11 +11,6 @@ $("#loginForm").keypress(
 
         }
     });
-
-
-
-
-
 
 //show signup screen
 function signup() {
@@ -102,49 +72,6 @@ function hideLoginScreen() {
     $("#isFirstTime").hide();
 }
 
-/*
-function setName(form){
-                var email = form.email.value;
-                var pass = form.pass.value;
-                
-                $("#loginWait").text("רק רגע...");
-                                
-                DB.authWithPassword({
-                  email    : email,
-                  password : pass
-                }, function(error, authData) {
-                  if (error) {
-                    console.log("Login Failed!", error);
-                    
-                    $("#loginMessage2").css("background-color","red");
-                
-                
-                    switch (error.code) {
-                      case "INVALID_PASSWORD":
-                        $("#loginMessage2").text('סיסמא לא נכונה');
-                        break;                  
-                      case "INVALID_USER":
-                         $("#loginMessage2").text('אין משתמש כזה');
-                        break;
-                      default:
-                        $("#loginMessage2").text('הנתונים אינם תקינים');
-                    }
-                      
-                  } else {
-                    console.log("Authenticated successfully with payload:", authData);
-                    
-                    //find user name by uid
-                      console.log("uid: "+authData.uid);
-                    
-                    getUserName();  
-                      
-                    //$("header").text("שלום "+email);
-                    showQuestions(); //show question page
-                    $("#login").hide(100);
-                  }
-                });
-            }
-*/
 function logout() {
     console.log("logout");
     firebase.auth().signOut();
@@ -152,9 +79,9 @@ function logout() {
 }
 
 
-function getUserName() {
-    DB.child("users/" + authData.uid).once("value", function (userData) {
-        console.log("found uid: " + userData.val().name);
+function getUserName(userUID) {
+    DB.child("users/" + userUID).once("value", function (userData) {
+
         userName = userData.val().name;
         $("header").html("שלום " + userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
     })
@@ -172,69 +99,51 @@ function enterLogin(e, form) {
 function anonymousAuthLogin(form) {
 
 
-    firebase.auth().signInAnonymously().catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.error('anonymousAuthLogin:', errorMessage);
-    });
-    auth.userName = form.name.value;
-
-    userName = form.name.value;
-    console.log("user name in login anonymous: " + userName);
+    store.user.name = form.name.value;
+    if (store.user.uid) {
+        DB.child('users/' + store.user.uid).update({ name: store.user.name });
+        localStorage.setItem("uid", store.user.uid);
+    }
 
     //save userName in window (to prevent lose of name in a case of reload)
-    localStorage.setItem("userName", userName);
+    localStorage.setItem("userName", store.user.name);
 
-    console.log("user: " + auth.userName)
+    $("#login").hide();
+    $("header").html("שלום " + store.user.name + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
+    showQuestions();
 
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            console.log('User is signed in.')
-            var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
-
-            auth = user;
-            auth.uid = uid;
-            auth.image = "img/avatar-male.png"
-            auth.userName = form.name.value;
-            userName = form.name.value;
-            console.log('userName..', userName)
-
-            console.log(auth.userName + ", " + auth.uid + ", " + auth.image + ", " + auth.userName + ", " + auth.token)
-
-            $("#login").hide();
-            $("header").html("שלום " + userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
-            showQuestions();
-        } else {
-            console.log('User is signed out.')
-
-        }
-
-    });
-
-    //set login to DB
-
-    // DB.authAnonymously(function (error, authData) {
-    //     if (error) {
-    //         console.log("Login Failed!", error);
-    //     } else {
-    //         console.log("Authenticated successfully with payload:", authData);
-
-    //         auth = authData;
-    //         auth.image = "img/avatar-male.png"
-    //         auth.userName = form.name.value;
-    //         userName = form.name.value;
-
-    //         console.log(auth.userName + ", " + auth.uid + ", " + auth.image + ", " + auth.userName + ", " + auth.token)
-
-    //         $("#login").hide();
-    //         $("header").html("שלום " + userName + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
-    //         showQuestions();
-
-    //     }
-    // });
 }
+
+firebase.auth().signInAnonymously().catch(function (error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.error('anonymousAuthLogin:', errorMessage);
+});
+
+var store = { user: {} }
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+
+
+        console.log('User is signed in.')
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        store.user.uid = user.uid;
+        store.user.isAnonymous = isAnonymous;
+        getUserName(uid);
+        auth = user;
+        auth.uid = uid;
+        auth.image = "img/avatar-male.png";
+
+
+    } else {
+        console.log('User is signed out.')
+
+    }
+
+});
 
 
 
@@ -242,13 +151,13 @@ function anonymousAuthLogin(form) {
 //get group owner
 sessionDB.child("details").once("value", function (snapshot) {
     var groupOwner = snapshot.val().owner;
-    console.log("groupOwner: " + groupOwner + ", userName: " + userName);
+
     if (groupOwner == userName || groupOwner == undefined) {
         $(".editQuestionPen").css("display", "inline");
-        console.log("Show!");
+
     } else {
         $(".editQuestionPen").css("display", "none");
-        console.log("Hide!");
+
     }
 })
 
