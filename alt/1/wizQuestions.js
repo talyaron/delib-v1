@@ -16,9 +16,7 @@ function startWizOptions(questionKey) {
   window.location.hash = groupAddress + '/' + questionKey
 
   //when an option is added, redraw options
-  sessionDB.child("questions/" + questionKey + "/options").on("child_added", function (snapshot) {
-    wizShowOptions(questionKey);
-  })
+  listenToNewOptions('on', questionKey);
 
   //when an option is deleted, redraw options
   sessionDB.child("questions/" + questionKey + "/options").on("child_removed", function (snapshot) {
@@ -110,7 +108,7 @@ function wizShowOptions(questionKey) {
         "</div>" +
         "<div class='wizSuggest wizButtons clickables' onclick='setSuggestion()'><img src='img/suggestion.png' height='30px'>" +
         "</div>" +
-        "<div class='wizTalk wizButtons clickables' onclick='startWizTalk(" + questionKeyStr + "," + optionKeyStr + ", " + optionTitleStr + ")'><img src='img/talk.png' height='30px'>" +
+        "<div class='wizTalk wizButtons clickables' onclick='startWizTalk(" + questionKeyStr + "," + optionKeyStr + ", " + optionTitleStr + ")'><img src='img/talk.png' height='30px'><div id='" + optionKey + "count' ></div>" +
         "</div>" +
         "</div>" +
         "<div class='wizMainWrapText' style='background-color:" + colorStr + "'>" +
@@ -131,7 +129,7 @@ function wizShowOptions(questionKey) {
       var sumVotes = yesVotes - noVotes;
 
       optionsHtml.push([sumVotes, optionHtmlCurrent, optionID, -1]); //[score, HTML, ID, location]
-
+      countChats('on', questionKey, optionKey);
     })
 
     //sort by votes
@@ -174,6 +172,7 @@ function wizShowOptions(questionKey) {
     //move options
 
     moveOptions(optionsHtml);
+
 
   })
 }
@@ -317,6 +316,14 @@ function updateText(questionKey, optionKey) {
   $("#editWizQuestion").hide(500);
 }
 
+function cancelEdit(questionKey, optionKey) {
+  var textID = questionKey + optionKey;
+  var titleInput = $("#" + textID + "TEdit").html();
+  //wizShowOptions(questionKey);
+  $("#editWizQuestion").hide(500);
+
+}
+
 
 //create new option edit box
 
@@ -409,7 +416,8 @@ function editWizOption(questionKey, optionKey) {
       textOption +
       "</div>" +
       "</div>" +
-      " <input type='button' class='pure-button pure-button-primary' value='OK' onclick='updateText(" + questionKeyStr + "," + optionKeyStr + ")'> " +
+      " <input type='button' class='pure-button pure-button-primary' value='אישור' onclick='updateText(" + questionKeyStr + "," + optionKeyStr + ")'> " +
+      " <input type='button' class='pure-button pure-button-primary button-warning' value='ביטול' onclick='cancelEdit(" + questionKeyStr + "," + optionKeyStr + ")'> " +
       "<input type='button' class='button-align-right pure-button button-error' value='מחיקה'" +
       " onclick='deleteWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> " +
       "</div></div>";
@@ -436,6 +444,8 @@ function closeWizQuestions(questionKey) {
   //change address to the question
   window.location.hash = groupAddress
 
+
+
   //close listening;
   sessionDB.child("questions/" + questionKey).off();
   sessionDB.child("questions/" + questionKey + "/options").off();
@@ -444,6 +454,7 @@ function closeWizQuestions(questionKey) {
   sessionDB.child("questions/" + questionKey + "/options").once('value').then(optionsDB => {
     optionsDB.forEach(optionDB => {
       optionKey = optionDB.key;
+      countChats('off', questionKey, optionKey);
       sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/text").off("value");
       sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/votes").off("value");
       sessionDB.child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes").off("value");
@@ -459,15 +470,27 @@ function pausePlay(questionKey) {
   if (isMoveOptions) {
     $("#wizUpdate").attr("src", "img/play.png");
     isMoveOptions = false;
+    listenToNewOptions('off', questionKey);
 
   } else {
     $("#wizUpdate").attr("src", "img/pause.png");
     isMoveOptions = true;
-    wizShowOptions(questionKey);
+    listenToNewOptions('on', questionKey);
+    // wizShowOptions(questionKey);
 
   }
 }
 
+function listenToNewOptions(onOff, questionKey) {
+  if (onOff === 'on') {
+    sessionDB.child("questions/" + questionKey + "/options").on("child_added", function (snapshot) {
+
+      wizShowOptions(questionKey);
+    })
+  } else {
+    sessionDB.child("questions/" + questionKey + "/options").off("child_added")
+  }
+}
 // var xt = {}
 // function listenToChatOfOption(questionKey, optionKey) {
 //   console.log('listenToChatOfOption');

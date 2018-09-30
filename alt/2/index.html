@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>החלטה משתפת</title>
+    <title>יוסי כמיסה - החלטה משתפת</title>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="img/favicon.png" />
 
@@ -32,13 +32,20 @@
 <body dir="rtl">
     <div id="login">
         <div id="loginForm">
-            <form class="form-group">
-                <span id="sessionName" width="150px"><h3>מועצה אזורית מעלה יוסף</h3><br>בשיתוף עם<br><img src='img/kol-haam-logo.jpg'><br>מחליטים
-                    ביחד
-                    </b></span><br><br>
-                <legend>התחברות</legend>
-                <input type="text" class="form-control" id="nameOfUser" name="name" size="8" placeholder="שם מלא" onkeyup="enterLogin(event, this.form)"
+            <span id="sessionName"><img src='img/yossi-logo.jpg'><br>בשיתוף עם<br><img src='img/kol-haam-logo.jpg'>
+
+            </span>
+            <br>
+            <br>
+            <div class='loginExplain'>
+                רוצה להשפיע על פעילות המועצה האזורית מעלה יוסף?<br> הכנס למערכת Delib.org <a href='https://www.kolhaam.org.il'
+                    target="_blank">של מפלגת קול העם</a><br> והוסף את הצעתך או הבע דעתך על הצעותיהם של אחרים.
+            </div>
+            <form class="pure-form">
+
+                <input type="text" class="" id="nameOfUser" name="name" size="8" placeholder="שם מלא" onkeyup="enterLogin(event, this.form)"
                     autofocus>
+                <br>
                 <input type="button" id='loginButton' class="btn btn-primary" value="התחברות" onclick="anonymousAuthLogin(this.form)">
             </form>
             <div id="cc">פותח על ידי <a href="http://tal.yaron.com" target='_blank '>טל ירון</a><br> במסגרת <a href="http://delib-democracy.org"

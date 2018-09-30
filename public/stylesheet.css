@@ -689,7 +689,7 @@ header {
     z-index: +3;
 }
 
-/* ----------------------- */
+/* ------------Wiz Questions----------- */
 
 #okWizQuestion {
     position: fixed;
@@ -727,6 +727,20 @@ header {
     right: 0px;
     top: 0px;
     background-color: antiquewhite;
+}
+
+.optionInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.resultsLine {
+    margin: 5px;
+}
+
+.ownerName {
+    color: white;
+    padding: 3px;
 }
 
 /* -------------------------- chat ---------------------------- */

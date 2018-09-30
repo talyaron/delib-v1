@@ -24,7 +24,8 @@ function signup() {
 //Signup
 function setNewUser(form) {
     var email = form.email.value;
-    var name = form.name.value;
+    store.user.name = form.name.value;
+
     var pass = form.pass.value;
 
     //Create user
