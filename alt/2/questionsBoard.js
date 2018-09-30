@@ -104,18 +104,14 @@ function getGroupName() {
         //wrrite group name on board
         $('.orgName').text(groupName);
         console.log('getGroupName', groupOwner, store.user.uid)
-        //show editing options if the user is the owner
+        //show editin options if the user is the owner
         if (groupOwner == store.user.uid || groupOwner == undefined) {
             console.log('enable editing');
             $(".editQuestionPen").css("display", "block");
-            $("#plusQuestion").css("display", "block");
 
         } else {
             console.log('disable editing');
             $(".editQuestionPen").css("display", "none");
-            $("#plusQuestion").hide();
-            $("#plusGroup").hide();
-
 
         }
     });

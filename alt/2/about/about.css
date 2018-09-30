@@ -1,0 +1,37 @@
+body {
+    background-color: white;
+    color: #2f2e2e;
+}
+
+a {
+    color: #777777;
+}
+#msg {
+    width: 80%;
+    
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+    
+    box-shadow: 5px 5px 10px #909090;
+    padding: 20px;
+    border-radius: 3px;
+    border-color: #cecece;
+    border-width: 1px;
+    
+    
+}
+
+header{
+    font-weight: bold;
+    font-size: 1.25em;
+    
+}
+
+.bodyMsg{
+    
+    text-align: justify;
+    
+}

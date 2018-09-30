@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>החלטה משתפת</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+
+    <script src="jquery-1.11.2.min.js"></script>
+    <script src="commonFunctions.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
+
+    <!-- Bootstrap switch -->
+    <link href="boot-strap-switch/bootstrap.css" rel="stylesheet">
+    <link href="boot-strap-switch/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
+    <script src="boot-strap-switch/js/bootstrap-switch.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+    <script src="firebase.js"></script>
+
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel=stylesheet type="text/css" href="stylesheet.css">
+
+
+</head>
+
+<body dir="rtl">
+    <div id="login">
+        <div id="loginForm">
+            <form class="form-group">
+                <span id="sessionName" width="150px"><h3>מועצה אזורית מעלה יוסף</h3><br>בשיתוף עם<br><img src='img/kol-haam-logo.jpg'><br>מחליטים
+                    ביחד
+                    </b></span><br><br>
+                <legend>התחברות</legend>
+                <input type="text" class="form-control" id="nameOfUser" name="name" size="8" placeholder="שם מלא" onkeyup="enterLogin(event, this.form)"
+                    autofocus>
+                <input type="button" id='loginButton' class="btn btn-primary" value="התחברות" onclick="anonymousAuthLogin(this.form)">
+            </form>
+            <div id="cc">פותח על ידי <a href="http://tal.yaron.com" target='_blank '>טל ירון</a><br> במסגרת <a href="http://delib-democracy.org"
+                    target='_blank '> המכון לדמוקרטיה דיונית</a>
+                <div id="license">הקוד נמצא ב- <a href="https://github.com/talyaron/delib-v1">Github</a> תחת רישיון קוד פתוח</div>
+            </div>
+        </div>
+    </div>
+
+    <header></header>
+
+    <div id="simplVoting"></div>
+    <div id="questionsList"></div>
+    <div id="wizQuestion"></div>
+    <div id='editWizQuestion'></div>
+    <script>$("#editWizQuestion").hide();</script>
+
+    <div id="editQuestions"></div>
+
+
+    <div id="newQuestion">
+
+    </div>
+
+
+    <div id="chat"></div>
+
+    <script src="wizQuestions.js"></script>
+    <script src="routing.js"></script>
+    <script src="questionsBoard.js"></script>
+    <script src="simpleVoting.js"></script>
+    <script src="editSetQuestions.js"></script>
+
+    <script src="chat.js"></script>
+    <script src="signup.js"></script>
+</body>
+<!-- Hotjar Tracking Code for http://yosef.delib.org -->
+<script>
+    (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+        h._hjSettings = { hjid: 1032522, hjsv: 6 };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script'); r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+</script>
+
+</html>
