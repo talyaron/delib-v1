@@ -108,10 +108,12 @@ function getGroupName() {
         if (groupOwner == store.user.uid || groupOwner == undefined) {
             console.log('enable editing');
             $(".editQuestionPen").css("display", "block");
+            $("#plusQuestion").css("display", "block");
 
         } else {
             console.log('disable editing');
             $(".editQuestionPen").css("display", "none");
+            $("#plusQuestion").css("display", "none");
 
         }
     });

@@ -31,3 +31,19 @@ exports.updateVotes = functions.database
             .update({ sumVotes: sumVotes, yesVotes: yesVotes, noVotes: noVotes })
 
     })
+
+exports.countChats = functions.database
+    .ref('sessions/{sessionId}/questionsChat/{questionId}/options/{optionId}/chat')
+    .onUpdate((change, context) => {
+        var messagesDB = change.after;
+        var sessionId = context.params.sessionId;
+        var questionId = context.params.questionId;
+        var optionId = context.params.optionId;
+
+        var numberOfMessages = messagesDB.numChildren();
+
+        return admin.database()
+            .ref('sessions/' + sessionId + '/questionsChat/' + questionId + '/options/' + optionId)
+            .update({ messagesCount: numberOfMessages })
+
+    })
