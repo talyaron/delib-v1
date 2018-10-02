@@ -62,6 +62,13 @@ function wizShowOptions(questionKey) {
       var optionTitle = optionDB.val().text.title;
       var optionText = optionDB.val().text.mainText;
       var optionColor = optionDB.val().text.color;
+      var optionOwner = '';
+      var optionOwnerName = '';
+      if (optionDB.val().owner) {
+        var optionOwner = optionDB.val().owner.uid;
+        var optionOwnerName = optionDB.val().owner.name;
+      }
+
 
       //listen to changes in texts
       listenToTextsChange(questionKey, optionKey);
@@ -98,6 +105,12 @@ function wizShowOptions(questionKey) {
       yesVotes = votesObj.yes;
       noVotes = votesObj.no;
 
+      //set editing only if the user is the owner
+      var doEditString = " <input type='button' class='pure-button pure-button-primary button-edit-margin button-small' value='עריכה' onclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> ";
+      if (optionOwner != store.user.uid) {
+        doEditString = "";
+      }
+
       //build the option HTML
       var optionHtmlCurrent =
         "<div class='wizLayout' id='" + optionID + "' >" +
@@ -122,8 +135,11 @@ function wizShowOptions(questionKey) {
         optionText +
         "</div>" +
         "</div>" +
-        " <input type='button' class='pure-button pure-button-primary button-edit-margin button-small' value='עריכה' onclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'> " +
-        " <span style='color: white' id='" + questionKey + optionKey + "votes'>בעד:" + yesVotes + ", נגד: " + noVotes + " תוצאה: " + (yesVotes - noVotes) + "</span>" +
+        "<div class='optionInfo'>" +
+        doEditString +
+        " <div class='resultsLine' style='color: white' id='" + questionKey + optionKey + "votes'>בעד:" + yesVotes + ", נגד: " + noVotes + " תוצאה: " + (yesVotes - noVotes) + "</div>" +
+        "<div class='ownerName'>" + optionOwnerName + "</div>" +
+        "</div>" +
         "</div></div>";
       //add option to array of options
       var sumVotes = yesVotes - noVotes;
@@ -356,7 +372,12 @@ function createOption(questionKey, form) {
       sumVotes: 0,
       yesVotes: 0,
       noVotes: 0
+    },
+    owner: {
+      uid: store.user.uid,
+      name: store.user.name
     }
+
   });
 
   var optionKey = newOption.key;

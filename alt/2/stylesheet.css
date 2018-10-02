@@ -69,19 +69,6 @@ header {
     margin-right: -100px;
 }
 
-#nameOfUser {
-    width: 150px;
-}
-
-.loginExplain {
-    font-size: 1.1rem;
-    color: rgba(0, 0, 0, 0.794);
-}
-
-.pure-form {
-    margin-top: 20px;
-}
-
 #loginMessage {
     border-radius: 10px;
     padding: 10px;
@@ -702,7 +689,7 @@ header {
     z-index: +3;
 }
 
-/* ----------------------- */
+/* ------------Wiz Questions----------- */
 
 #okWizQuestion {
     position: fixed;
@@ -740,6 +727,20 @@ header {
     right: 0px;
     top: 0px;
     background-color: antiquewhite;
+}
+
+.optionInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.resultsLine {
+    margin: 5px;
+}
+
+.ownerName {
+    color: white;
+    padding: 3px;
 }
 
 /* -------------------------- chat ---------------------------- */
