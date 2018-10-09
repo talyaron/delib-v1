@@ -511,16 +511,4 @@ function listenToNewOptions(onOff, questionKey) {
     sessionDB.child("questions/" + questionKey + "/options").off("child_added")
   }
 }
-// var xt = {}
-// function listenToChatOfOption(questionKey, optionKey) {
-//   console.log('listenToChatOfOption');
-//   sessionDB.child('questionsChat/' + questionKey + '/options/' + optionKey + '/chat')
-//     .orderByChild('time').limitToLast(4).startAt(userLastEnter).on('child_added', chatMessageDB => {
-//       console.log('child added')
-//       if (!xt.hasOwnProperty(optionKey)) {
-//         xt[optionKey] = {}
-//       }
-//       xt[optionKey][chatMessageDB.val().time] = true
-//       console.log(questionKey, optionKey, xt)
-//     })
-// }
+

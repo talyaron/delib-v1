@@ -111,7 +111,17 @@ function anonymousAuthLogin(form) {
 
     $("#login").hide();
     $("header").html("שלום " + store.user.name + " &nbsp<img id='logoutImg' class='clickables'src='img/logout.png' onclick='logout()' align='top'>");
-    showQuestions();
+
+    if (isQuestion) {
+        if (typeOfQuestionURL === 'wiz') {
+            startWizOptions(questionIdURL)
+        } else {
+            voteQuestion(questionIdURL)
+        }
+    } else {
+        showQuestions();
+    }
+
 
 }
 
