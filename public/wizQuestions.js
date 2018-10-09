@@ -130,8 +130,7 @@ function wizShowOptions(questionKey) {
         "ondblclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'>" +
         optionTitle +
         "</div>" +
-        "<div class='wizMainTextText' contenteditable='false' id='" + questionKey + optionKey + "'" +
-        "ondblclick='editWizOption(" + questionKeyStr + "," + optionKeyStr + ")'>" +
+        "<div class='wizMainTextText' contenteditable='false' id='" + questionKey + optionKey + "'>" +
         optionText +
         "</div>" +
         "</div>" +
