@@ -2,16 +2,18 @@
 //find the group adrress and start session in this group
 
 var groupAddress = window.location.hash;
+var questionIdURL, isQuestion = false,
+  typeOfQuestionURL;
 groupAddress = groupAddress.slice(1);
 var locationOfSlash = groupAddress.indexOf('/')
 
-var isQuestion = false
+
 
 if (locationOfSlash > 0) {
 
   isQuestion = true
 
-  questionId = groupAddress.slice(locationOfSlash + 1)
+  questionIdURL = groupAddress.slice(locationOfSlash + 1)
 
   groupAddress = groupAddress.slice(0, locationOfSlash)
 
@@ -26,16 +28,16 @@ if (groupAddress == "") {
 
 var sessionDB = DB.child("/sessions/" + groupAddress);
 
+
 // if url direct to a question
 if (isQuestion) {
   //get type of question and and go to the question
-  sessionDB.child('questions/' + questionId + '/type').once('value', function (type) {
+  sessionDB.child('questions/' + questionIdURL + '/type').once('value', function (type) {
     if (type.exists()) {
       if (type.val() == 'wiz') {
-        startWizOptions(questionId)
+        typeOfQuestionURL = 'wiz';
       } else {
-
-        voteQuestion(questionId)
+        typeOfQuestionURL = 'reg';
       }
     }
   })
