@@ -29,7 +29,8 @@ function startWizOptions(questionKey) {
       var optionKey = optionDB.key;
 
       //listen to changes in texts
-      listenToTextsChange(questionKey, optionKey);
+      // listenToTextsChange(questionKey, optionKey);
+      listenToOption(questionKey, optionKey);
 
       //listen to changes in votes and move options; update text
       // moveOptionsOnVoting(questionKey, optionKey);
@@ -48,6 +49,7 @@ function wizShowOptions(questionKey) {
 
 
   //get information for all options under the question
+  console.log('get information for all options under the question')
   sessionDB.child("questions/" + questionKey + "/options").once("value", function (optionsDB) {
 
     //array for all the options
@@ -55,8 +57,6 @@ function wizShowOptions(questionKey) {
 
     //get information for all options under the question and create aray with the options
     optionsDB.forEach(function (optionDB) {
-
-
 
       var optionKey = optionDB.key;
       var optionTitle = optionDB.val().text.title;
@@ -69,17 +69,6 @@ function wizShowOptions(questionKey) {
         var optionOwnerName = optionDB.val().owner.name;
       }
 
-
-      //listen to changes in texts
-      listenToTextsChange(questionKey, optionKey);
-
-      //listen to changes in votes and move options; update text 
-      moveOptionsOnVoting(questionKey, optionKey);
-      //liste to changes in votes and update texts
-      countVotesContinusely(questionKey, optionKey);
-
-      //listen to chats counter
-      // listenToChatOfOption(questionKey, optionKey);
 
 
       //Stringfing variable for the HTML of the option
@@ -192,7 +181,23 @@ function wizShowOptions(questionKey) {
   })
 }
 
+
+
 //Start listen to changes in texts in DB and update options
+
+function listenToOption(questionKey, optionKey) {
+  //listen to changes in texts
+  listenToTextsChange(questionKey, optionKey);
+
+  //listen to changes in votes and move options; update text 
+  console.log('moveOptionsOnVoting', questionKey, optionKey)
+  moveOptionsOnVoting(questionKey, optionKey);
+  //liste to changes in votes and update texts
+  countVotesContinusely(questionKey, optionKey);
+
+  //listen to chats counter
+  // listenToChatOfOption(questionKey, optionKey);
+}
 
 function listenToTextsChange(questionKey, optionKey) {
 
@@ -257,7 +262,7 @@ function moveOptionsOnVoting(questionKey, optionKey) {
   sessionDB
     .child("questions/" + questionKey + "/options/" + optionKey + "/sumVotes/sumVotes")
     .on("value", function (votesDB) {
-
+      console.log('sumVotes changes', questionKey, optionKey)
       sumVotes = votesDB.val();
 
       var optionsHtml = new Array();
@@ -384,6 +389,7 @@ function createOption(questionKey, form) {
 
 
   $("#editWizQuestion").hide(500);
+
   wizShowOptions(questionKey);
 
   //listen to changes in texts
@@ -503,9 +509,10 @@ function pausePlay(questionKey) {
 
 function listenToNewOptions(onOff, questionKey) {
   if (onOff === 'on') {
-    sessionDB.child("questions/" + questionKey + "/options").on("child_added", function (snapshot) {
+    sessionDB.child("questions/" + questionKey + "/options").limitToLast(1).on("child_added", function (newOptionDB) {
 
       wizShowOptions(questionKey);
+      listenToOption(questionKey, newOptionDB.key)
     })
   } else {
     sessionDB.child("questions/" + questionKey + "/options").off("child_added")
