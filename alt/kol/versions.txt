@@ -1,0 +1,32 @@
+2015-05-25-1931:
+* Add vote without seening the results beforehand.
+
+2015-05-25-2129:
+* Improve wizQuestions
+** Add new single standing option - V
+** Add colors
+** Find the solution to the 17 ordering.
+* Improve simple Questions:
+** Hide names
+
+2015-05-27-2033:
+* Start Creating chat for options in wiz.
+
+2015-06-07-1704:
+* switch from wiz to reg and visa versa.
+
+2015-09-30-2313:
+* new wizQuestions, more orderd
+
+2015-12-26-1921:
+* Change user login to free/registered
+* Added BSD License
+
+2016-01-02-1816:
+* create link to group1
+
+2016-01-04-2016:
+* solve "enter" bug.
+
+2016-01-18:
+* develope the ability to create reach text, including pictures in wizQwuestions.

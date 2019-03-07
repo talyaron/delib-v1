@@ -1,0 +1,37 @@
+<!-------- login screen ---------->
+        
+        <div id="login">
+            <div id="signup">
+                <div id="signupForm">
+                    <form class="pure-form pure-form-stacked" onkeypress ="setNewUser(this.form)">
+                        <span id="sessionName" width="150px"><b>הרשמה</b></span>                     
+                    <div id="loginMessage"></div>
+                    <lable>פרטי כניסה:</label>
+                    <input type="text" id="signupNameForm" name="name" size="20" placeholder="שם פרטי ושם משפחה">
+                    <input type="email" id="signupEmailForm" name="email" size="20" placeholder="email">
+                    <input type="password" id="signupPassForm" name="pass" size="20" placeholder="סיסמא">
+                    <input type="button" class="pure-button action-button" value="אישור" onclick="setNewUser(this.form)">&nbsp;&nbsp;&nbsp;<span onclick="hideLoginScreen()" style="color:blue" class="clickables">ביטול</span>
+                    <div id="loginMessage"></div>
+                </form>
+                    
+                </div>     
+            </div>
+            <div id="loginForm">
+                    <form class="pure-form pure-form-stacked" onkeypress ="setName(this.form)">
+                        <span id="sessionName" width="150px"><b>החלטה משתפת</b></span><br>                        
+                    <span>פרטי כניסה:</span>
+                    <div id="loginMessage2"></div>
+                    <input type="email" id="emailForm" name="email" size="20" placeholder="Email" autocomplete="on" autofocus>
+                    <input type="password" id="passForm" name="pass" size="20" placeholder="סיסמא">
+                    <input type="button" class="pure-button action-button" value="אישור" onclick="setName(this.form)"><label id="loginWait"></label><br>
+                    <span id="isFirstTime">פעם ראשונה כאן?  
+                        <input type="button" class="pure-button pure-button-primary button-small" value="הרשם/י" onclick="signup()">
+                    </span>
+                </form>
+                <div id="cc"><br>פותח על ידי <a href="http://bit.ly/1HZMMZS" target='_blank'>צוות החלטה משתפת - הסדנא לידע ציבורי</a><br><br><br><br><br><br><br><br><br>
+          <div id="license">התוכנה באתר נמצאת תחת <a href="LICENSE.txt">רשיון קוד פתוח</a></div>         
+</div>
+                
+            </div> 
+            
+        </div>
